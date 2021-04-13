@@ -8,7 +8,7 @@ const TransactionSchema = new Schema({
     },
     date: {
         type: Number,
-        default: now;
+        default: now
     }
 })
 
