@@ -6,6 +6,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const transactionRoute = require('./routes/transactions');
+const path = require('path');
 const passport = require('passport');
 const session = require('express-session');
 
@@ -35,9 +36,12 @@ mongoose.connect(mongoURI, {
 
 app.use('/api/transactions', transactionRoute);
 
-app.get('/', (req,res) => {
-    res.send('Hello!');
-})
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/public'));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'public', 'index.html'));
+    })
+}
 
 app.listen(port, () => {
     console.log('Listening on ' + port);

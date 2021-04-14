@@ -20,6 +20,13 @@ module.exports = {
 		filename: '[name].js',
 		chunkFilename: '[name].[id].js'
 	},
+	devServer: {
+		proxy: {
+			'/api': {
+				target: 'http://localhost:3000'
+			},
+		},
+	},
 	module: {
 		rules: [
 			{
