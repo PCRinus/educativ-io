@@ -6,9 +6,12 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const transactionRoute = require('./routes/transactions');
+const authRoute = require('./routes/auth');
 const path = require('path');
+const User = require('./models/Users');
 const passport = require('passport');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -25,16 +28,24 @@ mongoose.connect(mongoURI, {
     process.exit();
 })
 
-// app.use(
-//     session({
-//         resave: true,
-//         saveUninitialized: true,
-//         secret: 'secret key',
-//         store: new MongoStore({mongooseConnection: mongoose.connection})
-//     })
-// )
+app.use(
+    session({
+        resave: true,
+        saveUninitialized: true,
+        secret: 'secret key',
+        store: new MongoStore({mongooseConnection: mongoose.connection})
+    })
+)
+
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/api/transactions', transactionRoute);
+app.use('/api/auth', authRoute);
 
 if(process.env.NODE_ENV === 'production') {
     app.use(express.static('client/public'));
