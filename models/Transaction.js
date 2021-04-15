@@ -9,6 +9,10 @@ const TransactionSchema = new Schema({
     date: {
         type: Number,
         default: now
+    },
+    user_id: {
+        type: String,
+        required: true,
     }
 })
 

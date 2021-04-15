@@ -12,7 +12,7 @@ function ensureLogin(req, res, next) {
 
 router.get("/", ensureLogin, async (req, res) => {
   try {
-    const transactions = await Transaction.find();
+    const transactions = await Transaction.find({ user_id: req.user._id });
     if (!transactions) {
       throw new Error("No transactions");
     }
@@ -24,7 +24,11 @@ router.get("/", ensureLogin, async (req, res) => {
 
 router.post("/", ensureLogin, async (req, res) => {
   const { value, date } = req.body;
-  const newTransaction = new Transaction({ value, date });
+  const newTransaction = new Transaction({
+    value,
+    date,
+    user_id: req.user._id,
+  });
 
   try {
     const transaction = await newTransaction.save();
@@ -44,6 +48,11 @@ router.delete("/:id", ensureLogin, async (req, res) => {
     if (!transaction) {
       throw new Error("No transaction found to delete");
     }
+
+    if (transaction.user_id !== String(req.user._id)) {
+      return res.status(403).message({ message: "Unauthorized" });
+    }
+
     const removedTransaction = await transaction.remove();
     if (!removedTransaction) {
       throw new Error("There was aproblem deleting the transaction");

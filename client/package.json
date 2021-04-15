@@ -16,6 +16,7 @@
     "dev": "webpack serve --content-base public"
   },
   "dependencies": {
-    "axios": "^0.21.1"
+    "axios": "^0.21.1",
+    "svelte-spa-router": "^3.1.0"
   }
 }
