@@ -1,0 +1,59 @@
+<script>
+  import axios from "axios";
+  import { user } from "../stores";
+  import { push } from "svelte-spa-router";
+  let username;
+  let password;
+  let errorMessage;
+
+  $: if(username) {
+      errorMessage: null;
+  }
+
+  async function signup() {
+    try {
+      const { data } = await axios.post("/api/auth/signup", {
+        username,
+        password,
+      });
+      $user = data.user;
+      push('/dashboard');
+    } catch (error) {
+        if(error.response.data.message === "User already exists") {
+            username = "";
+            password = "";
+            errorMessage = "Username is already taken";
+        }
+    }
+  }
+</script>
+
+<div class="container">
+  <div class="section">
+    <h1 class="title">hello</h1>
+    <hr />
+
+    <form on:submit|preventDefault={signup}>
+      <div class="field">
+        <label for="" class="label">Username</label>
+        <div class="control">
+          <input type="text" class="input" bind:value={username} class:is-danger={errorMessage} required />
+          {#if errorMessage}
+              <p class="help is-danger">{errorMessage}</p>
+          {/if}
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="" class="label">Password</label>
+        <div class="control">
+          <input type="password" class="input" bind:value={password} required/>
+        </div>
+      </div>
+
+      <div class="control">
+        <input type="submit" class="button is-info is-light" value="Submit" />
+      </div>
+    </form>
+  </div>
+</div>
