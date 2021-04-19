@@ -32,7 +32,7 @@
 
 <div class="container">
   <div class="section">
-    <h1 class="title">hello</h1>
+    <h1 class="title">Sign Up</h1>
     <hr />
 
     <form on:submit|preventDefault={signup}>
