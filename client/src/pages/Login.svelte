@@ -21,7 +21,7 @@
       $user = data.user;
       push("/dashboard");
     } catch (error) {
-      if (error.response.status === 403) {
+      if (error.response.status === 401) {
         username = "";
         password = "";
         errorMessage = "Invalid credentials";
@@ -34,7 +34,9 @@
   <div class="section">
     <h1 class="title">Log In</h1>
     <hr />
-
+    {#if errorMessage}
+      <p class="help is-danger">{errorMessage}</p>
+    {/if}
     <form on:submit|preventDefault={login}>
       <div class="field">
         <label for="" class="label">Username</label>
@@ -46,16 +48,19 @@
             class:is-danger={errorMessage}
             required
           />
-          {#if errorMessage}
-            <p class="help is-danger">{errorMessage}</p>
-          {/if}
         </div>
       </div>
 
       <div class="field">
         <label for="" class="label">Password</label>
         <div class="control">
-          <input type="password" class="input" bind:value={password} required />
+          <input
+            type="password"
+            class="input"
+            bind:value={password}
+            class:is-danger={errorMessage}
+            required
+          />
         </div>
       </div>
 
