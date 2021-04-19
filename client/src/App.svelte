@@ -1,9 +1,10 @@
 <script>
     import Router from "svelte-spa-router";
-    import Home from "./Pages/Home.svelte";
-    import Dashboard from "./Pages/Dashboard.svelte";
-    import Profile from "./Pages/Profile.svelte"
-    import Signup from "./Pages/Signup.svelte";
+    import Navbar from "./layout/Navbar.svelte";
+    import Home from "./pages/Home.svelte";
+    import Dashboard from "./pages/Dashboard.svelte";
+    import Profile from "./pages/Profile.svelte"
+    import Signup from "./pages/Signup.svelte";
 
     const routes = {
         "/": Home,
@@ -12,5 +13,7 @@
         "/signup": Signup
     }
 </script>
+
+<Navbar/>
 
 <Router {routes}/>
