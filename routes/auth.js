@@ -60,7 +60,7 @@ router.post('/change-password', (req, res, next) => {
     try {
         const user = await User.findById(req.user._id)
         await user.changePassword(oldPassword, newPassword);
-        res.json({message: "Success"});
+        res.json({message: "Success, password was changed"});
     } catch (error) {
         if(error.name === 'IncorrectPasswordError') {
             return res.status(400).json({message: "Incorrect password"});

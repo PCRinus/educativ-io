@@ -1,4 +1,4 @@
-<section class="hero is-link is-fullheight-with-navbar">
+<section class="hero is-fullheight-with-navbar">
     <div class="hero-body">
         <div class="container">
             <h2>Educativ.io</h2>

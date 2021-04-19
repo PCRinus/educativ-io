@@ -1,14 +1,10 @@
 const { Router } = require("express");
 const Transaction = require("../models/Transaction");
+const {ensureLogin} = require("../middlewares/auth");
 
 const router = Router();
 
-function ensureLogin(req, res, next) {
-  if (!req.isAuthenticated()) {
-    return res.status(401).send({ message: "User is not authenticated" });
-  }
-  next();
-}
+ensureLogin;
 
 router.get("/", ensureLogin, async (req, res) => {
   try {
