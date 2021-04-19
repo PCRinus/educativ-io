@@ -4,8 +4,6 @@ const {ensureLogin} = require("../middlewares/auth");
 
 const router = Router();
 
-ensureLogin;
-
 router.get("/", ensureLogin, async (req, res) => {
   try {
     const transactions = await Transaction.find({ user_id: req.user._id });

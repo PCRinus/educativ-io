@@ -5,13 +5,14 @@ const {port, mongoURI} = require('./config');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const transactionRoute = require('./routes/transactions');
-const authRoute = require('./routes/auth');
 const path = require('path');
 const User = require('./models/Users');
 const passport = require('passport');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const transactionRoute = require('./routes/transactions');
+const authRoute = require('./routes/auth');
+const profileRoute = require('./routes/profile');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -46,6 +47,7 @@ app.use(passport.session());
 
 app.use('/api/transactions', transactionRoute);
 app.use('/api/auth', authRoute);
+app.use('/api/profile', profileRoute);
 
 if(process.env.NODE_ENV === 'production') {
     app.use(express.static('client/public'));

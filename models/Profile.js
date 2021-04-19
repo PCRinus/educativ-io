@@ -13,8 +13,12 @@ const ProfileSchema = new Schema({
         type: Number,
         required: true,
     },
+    user_id: {
+        type: String,
+        required: true,
+    }
 })
 
-const Transaction = model('transaction', TransactionSchema);
+const Profile = model('profile', ProfileSchema);
 
-module.exports = Transaction;
+module.exports = Profile;
