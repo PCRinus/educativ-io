@@ -1,15 +1,15 @@
 <script>
   import { push } from "svelte-spa-router";
+  import {uuidKey} from "../stores";
 
   const { v4: uuidv4 } = require("uuid");
-  let uuidKey;
 
   function generateUUID() {
-    uuidKey = uuidv4();
+    $uuidKey = uuidv4();
   }
 
   function redirectToRoom() {
-    push("/room/" + uuidKey);
+    push("/room/" + $uuidKey);
   }
 </script>
 
@@ -28,10 +28,10 @@
     </div>
 
     <div class="column">
-      {#if uuidKey === undefined}
+      {#if $uuidKey === undefined}
         <p>Please generate a key</p>
       {:else}
-        <p>{uuidKey}</p>
+        <p>{$uuidKey}</p>
       {/if}
     </div>
   </div>
