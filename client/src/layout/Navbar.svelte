@@ -35,11 +35,13 @@
   </div>
 
   <div class="navbar-menu" class:is-active={isActive}>
-    <div class="navbar-start">
-      <a href="#/dashboard" class="navbar-item"> Dashboard </a>
+    {#if $user}
+      <div class="navbar-start">
+        <a href="#/dashboard" class="navbar-item"> Dashboard </a>
 
-      <a href="#/profile" class="navbar-item"> Profile </a>
-    </div>
+        <a href="#/profile" class="navbar-item"> Profile </a>
+      </div>
+    {/if}
 
     <div class="navbar-end">
       <div class="navbar-item">

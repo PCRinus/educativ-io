@@ -14,6 +14,9 @@ const transactionRoute = require('./routes/transactions');
 const authRoute = require('./routes/auth');
 const profileRoute = require('./routes/profile');
 
+//webRTC dependencies
+const svelteViewEngine = require("svelte-view-engine");
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use(morgan('dev'));
