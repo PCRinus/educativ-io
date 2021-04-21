@@ -9,7 +9,7 @@
   }
 
   function redirectToRoom() {
-    push("#/" + uuidKey);
+    push("/room/" + uuidKey);
   }
 </script>
 
