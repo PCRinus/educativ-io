@@ -2,6 +2,7 @@
   import axios from "axios";
   import { onMount } from "svelte";
   import { setRequestURL } from "../../../middlewares/url";
+  import { userProfile } from "../stores";
 
   let hideProfileUpdateContainer = true;
   let firstName = "";
@@ -12,12 +13,10 @@
   let profileData = [];
 
   onMount(async () => {
-    const {data} = await axios.get(getProfileUrl);
+    const { data } = await axios.get(getProfileUrl);
 
     // const {data} = await axios.get("/api/profile");
-    profileData = data;
-    console.log(getProfileUrl)
-    console.log(profileData)
+    $userProfile = data;
   });
 
   async function setProfileChanges() {
@@ -25,15 +24,15 @@
       firstName: firstName,
       lastName: lastName,
       age: age,
-    }
+    };
     const response = await axios.post(getProfileUrl, profile);
-    profileData = [response.data];
+    $userProfile = [response.data];
   }
 </script>
 
 <div class="container">
   <h1>Profile</h1>
-  <p>{JSON.stringify(profileData)}</p>
+  <p>{JSON.stringify($userProfile)}</p>
   <button
     class="button is-link"
     on:click={() => (hideProfileUpdateContainer = !hideProfileUpdateContainer)}
