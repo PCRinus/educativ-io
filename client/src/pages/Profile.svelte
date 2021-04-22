@@ -12,8 +12,10 @@
   let profileData = [];
 
   onMount(async () => {
-    getProfileUrl = setRequestURL("/api/profile");
-    const {data} = await axios.get(getProfileUrl);
+    // getProfileUrl = setRequestURL("/api/profile");
+    // const {data} = await axios.get(getProfileUrl);
+
+    const {data} = await axios.get("/api/profile");
     profileData = data;
     console.log(getProfileUrl)
     console.log(profileData)
@@ -24,6 +26,7 @@
 
 <div class="container">
   <h1>Profile</h1>
+  <p>{JSON.stringify(profileData)}</p>
   <button
     class="button is-link"
     on:click={() => (hideProfileUpdateContainer = !hideProfileUpdateContainer)}
@@ -54,9 +57,6 @@
       <div class="control">
         <input type="submit" class="button is-link" value="Submit" />
       </div>
-
-      <p>{firstName}</p>
-      {JSON.stringify(profileData)}
     </form>
   </div>
 </div>
