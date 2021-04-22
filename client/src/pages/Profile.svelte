@@ -27,7 +27,7 @@
       age: age,
     }
     const response = await axios.post(getProfileUrl, profile);
-    profileData = [response.data, ...profileData];
+    profileData = [response.data];
   }
 </script>
 
