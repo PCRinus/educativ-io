@@ -32,7 +32,19 @@
 
 <div class="container">
   <h1>Profile</h1>
-  <p>{JSON.stringify($userProfile)}</p>
+  <div class="columns">
+    <div class="column">
+      <p>First name: {$userProfile.firstname}</p>
+    </div>
+
+    <div class="column">
+      <p>First name: {$userProfile.lastName}</p>
+    </div>
+
+    <div class="column">
+      <p>First name: {$userProfile.age}</p>
+    </div>
+  </div>
   <button
     class="button is-link"
     on:click={() => (hideProfileUpdateContainer = !hideProfileUpdateContainer)}
