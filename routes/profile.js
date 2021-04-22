@@ -6,7 +6,7 @@ const router = Router();
 
 router.get("/", ensureLogin, async(req, res) => {
     try {
-        const profileData = await Profile.find({ user_id: req.user._id });
+        const profileData = await Profile.find({ user_id: req.user._id }).sort({_id:-1}).limit(1);
         if(!profileData) {
             throw new Error("No profile added");
         }

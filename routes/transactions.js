@@ -49,7 +49,7 @@ router.delete("/:id", ensureLogin, async (req, res) => {
 
     const removedTransaction = await transaction.remove();
     if (!removedTransaction) {
-      throw new Error("There was aproblem deleting the transaction");
+      throw new Error("There was a problem deleting the transaction");
     }
     res.status(200).json(transaction);
   } catch (error) {
