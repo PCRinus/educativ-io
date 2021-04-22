@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const Transaction = require("../models/Transaction");
-const {ensureLogin} = require("../middlewares/auth");
+const { ensureLogin } = require("../middlewares/auth");
 
 const router = Router();
 
