@@ -34,15 +34,15 @@
   <h1>Profile</h1>
   <div class="columns">
     <div class="column">
-      <p>First name: {$userProfile.firstName}</p>
+      <p>First name: {JSON.stringify($userProfile.firstName)}</p>
     </div>
 
     <div class="column">
-      <p>First name: {$userProfile.lastName}</p>
+      <p>First name: {JSON.stringify($userProfile.lastName)}</p>
     </div>
 
     <div class="column">
-      <p>First name: {$userProfile.age}</p>
+      <p>First name: {JSON.stringify($userProfile.age)}</p>
     </div>
   </div>
   <button
