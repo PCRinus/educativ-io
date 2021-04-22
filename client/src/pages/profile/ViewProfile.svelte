@@ -1,11 +1,12 @@
 <script>
   import axios from "axios";
-  import { userProfile } from "../../stores";
+  import { userProfile, user } from "../../stores";
   import { push } from "svelte-spa-router";
   import { onMount } from 'svelte';
   import { setRequestURL } from "../../../../middlewares/url";
 
   onMount(async () => {
+    console.log($user);
     let getProfileUrl = setRequestURL("/api/profile");
     const {data} = await axios.get(getProfileUrl);
     $userProfile = data;
