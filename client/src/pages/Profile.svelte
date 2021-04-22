@@ -7,21 +7,28 @@
   let firstName = "";
   let lastName = "";
   let age = 0;
-  let getProfileUrl = '';
+  let getProfileUrl = setRequestURL("/api/profile");
 
   let profileData = [];
 
   onMount(async () => {
-    // getProfileUrl = setRequestURL("/api/profile");
-    // const {data} = await axios.get(getProfileUrl);
+    const {data} = await axios.get(getProfileUrl);
 
-    const {data} = await axios.get("/api/profile");
+    // const {data} = await axios.get("/api/profile");
     profileData = data;
     console.log(getProfileUrl)
     console.log(profileData)
   });
 
-  function setProfileChanges() {}
+  async function setProfileChanges() {
+    const profile = {
+      firstName: firstName,
+      lastName: lastName,
+      age: age,
+    }
+    const response = await axios.post(getProfileUrl, profile);
+    profileData = [response.data, ...profileData];
+  }
 </script>
 
 <div class="container">
