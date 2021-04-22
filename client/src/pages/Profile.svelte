@@ -34,7 +34,7 @@
   <h1>Profile</h1>
   <div class="columns">
     <div class="column">
-      <p>First name: {$userProfile.firstname}</p>
+      <p>First name: {$userProfile.firstName}</p>
     </div>
 
     <div class="column">
