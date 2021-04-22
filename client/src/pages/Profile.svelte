@@ -33,6 +33,7 @@
 <div class="container">
   <h1>Profile</h1>
   <div class="columns">
+    <p>Full profile: {JSON.stringify($userProfile)}</p>
     <div class="column">
       <p>First name: {JSON.stringify($userProfile.firstName)}</p>
     </div>
