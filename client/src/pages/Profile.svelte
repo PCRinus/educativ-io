@@ -13,9 +13,9 @@
   let profileData = [];
 
   onMount(async () => {
-    const { data } = await axios.get(getProfileUrl);
+    // const { data } = await axios.get(getProfileUrl);
 
-    // const {data} = await axios.get("/api/profile");
+    const {data} = await axios.get("/api/profile");
     $userProfile = data;
   });
 

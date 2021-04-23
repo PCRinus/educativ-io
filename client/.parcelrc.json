@@ -1,0 +1,7 @@
+
+{
+    "extends": ["@parcel/config-default"],
+    "transforms": {
+      "*.svelte": ["parcel-transformer-svelte3"]
+    }
+  }

@@ -6,10 +6,10 @@
   let isActive = false;
 
   async function logout() {
-    let logoutRequestUrl = setRequestURL("/api/auth/logout");
-    await axios.post(logoutRequestUrl);
+    // let logoutRequestUrl = setRequestURL("/api/auth/logout");
+    // await axios.post(logoutRequestUrl);
 
-    // await axios.post("/api/auth/logout");
+    await axios.post("/api/auth/logout");
     $user = null;
     push("/");
   }

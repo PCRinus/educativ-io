@@ -13,16 +13,16 @@
 
   async function login() {
     try {
-      let signupRequestURL = setRequestURL("/api/auth/login");
-      const { data } = await axios.post(signupRequestURL, {
-        username,
-        password,
-      });
-
-      // const { data } = await axios.post("/api/auth/login", {
+      // let signupRequestURL = setRequestURL("/api/auth/login");
+      // const { data } = await axios.post(signupRequestURL, {
       //   username,
       //   password,
       // });
+
+      const { data } = await axios.post("/api/auth/login", {
+        username,
+        password,
+      });
       $user = data.user;
       push("/dashboard");
     } catch (error) {
