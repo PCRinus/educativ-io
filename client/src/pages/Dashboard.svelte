@@ -1,8 +1,7 @@
 <script>
   import { push } from "svelte-spa-router";
   import { uuidKey } from "../stores";
-
-  const { v4: uuidv4 } = require("uuid");
+  import { v4 as uuidv4 } from "uuid";
 
   function generateUUID() {
     $uuidKey = uuidv4();
@@ -28,7 +27,7 @@
     </div>
 
     <div class="column">
-      {#if $uuidKey === ''}
+      {#if $uuidKey === ""}
         <p>Please generate a key</p>
       {:else}
         <p>{$uuidKey}</p>

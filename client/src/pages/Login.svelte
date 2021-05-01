@@ -2,7 +2,6 @@
   import axios from "axios";
   import { user } from "../stores";
   import { push } from "svelte-spa-router";
-  import { setRequestURL } from "../../../middlewares/url";
   let username;
   let password;
   let errorMessage;
@@ -13,12 +12,6 @@
 
   async function login() {
     try {
-      // let signupRequestURL = setRequestURL("/api/auth/login");
-      // const { data } = await axios.post(signupRequestURL, {
-      //   username,
-      //   password,
-      // });
-
       const { data } = await axios.post("/api/auth/login", {
         username,
         password,

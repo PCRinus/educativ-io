@@ -2,13 +2,9 @@
   import axios from "axios";
   import { push } from "svelte-spa-router";
   import { user } from "../stores";
-  import { setRequestURL } from "../../../middlewares/url";
   let isActive = false;
 
   async function logout() {
-    // let logoutRequestUrl = setRequestURL("/api/auth/logout");
-    // await axios.post(logoutRequestUrl);
-
     await axios.post("/api/auth/logout");
     $user = null;
     push("/");
