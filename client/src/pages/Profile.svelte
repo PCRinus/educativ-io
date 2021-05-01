@@ -1,19 +1,16 @@
 <script>
   import axios from "axios";
   import { onMount } from "svelte";
-  import { setRequestURL } from "../../../middlewares/url";
   import { userProfile } from "../stores";
 
   let hideProfileUpdateContainer = true;
   let firstName = "";
   let lastName = "";
   let age = 0;
-  let getProfileUrl = setRequestURL("/api/profile");
 
-  let profileData = [];
+  let profileData = {};
 
   onMount(async () => {
-    // const { data } = await axios.get(getProfileUrl);
 
     const {data} = await axios.get("/api/profile");
     $userProfile = data;
@@ -25,15 +22,16 @@
       lastName: lastName,
       age: age,
     };
-    const response = await axios.post(getProfileUrl, profile);
+    const response = await axios.post('/api/profile', profile);
     $userProfile = [response.data];
+    console.log(userProfile);
   }
 </script>
 
 <div class="container">
   <h1>Profile</h1>
+  <p>Full profile: {JSON.stringify($userProfile)}</p>
   <div class="columns">
-    <p>Full profile: {JSON.stringify($userProfile)}</p>
     <div class="column">
       <p>First name: {JSON.stringify($userProfile.firstName)}</p>
     </div>

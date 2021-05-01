@@ -1,7 +1,3 @@
-.DS_Store
+.snowpack
+build
 node_modules
-public/bundle.*
-package-lock.json
-yarn.lock
-dist
-.parcel-cache

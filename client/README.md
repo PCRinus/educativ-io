@@ -1,64 +1,24 @@
-# svelte app
+# New Project
 
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template-webpack.
+> ✨ Bootstrapped with Create Snowpack App (CSA).
 
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
+## Available Scripts
 
-```bash
-npx degit sveltejs/template-webpack svelte-app
-cd svelte-app
-```
+### npm start
 
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
+Runs the app in the development mode.
+Open http://localhost:8080 to view it in the browser.
 
+The page will reload if you make edits.
+You will also see any lint errors in the console.
 
-## Get started
+### npm run build
 
-Install the dependencies...
+Builds a static copy of your site to the `build/` folder.
+Your app is ready to be deployed!
 
-```bash
-cd svelte-app
-npm install
-```
+**For the best production performance:** Add a build bundler plugin like [@snowpack/plugin-webpack](https://github.com/snowpackjs/snowpack/tree/main/plugins/plugin-webpack) or [snowpack-plugin-rollup-bundle](https://github.com/ParamagicDev/snowpack-plugin-rollup-bundle) to your `snowpack.config.json` config file.
 
-...then start webpack:
+### Q: What about Eject?
 
-```bash
-npm run dev
-```
-
-Navigate to [localhost:8080](http://localhost:8080). You should see your app running. Edit a component file in `src`, save it, and the page should reload with your changes.
-
-
-## Deploying to the web
-
-### With [now](https://zeit.co/now)
-
-Install `now` if you haven't already:
-
-```bash
-npm install -g now
-```
-
-Then, from within your project folder:
-
-```bash
-now
-```
-
-As an alternative, use the [Now desktop client](https://zeit.co/download) and simply drag the unzipped project folder to the taskbar icon.
-
-### With [surge](https://surge.sh/)
-
-Install `surge` if you haven't already:
-
-```bash
-npm install -g surge
-```
-
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public
-```
+No eject needed! Snowpack guarantees zero lock-in, and CSA strives for the same.

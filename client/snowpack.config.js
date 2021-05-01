@@ -4,22 +4,19 @@ const proxy = require('http2-proxy');
 
 module.exports = {
   mount: {
-    /* ... */
+    // directory name: 'build directory'
+    public: "/",
+    src: "/dist",
   },
-  plugins: [
-    '@snowpack/plugin-svelte'
-  ],
+  plugins: ["@snowpack/plugin-svelte"],
   routes: [
     /* Enable an SPA Fallback in development: */
     // {"match": "routes", "src": ".*", "dest": "/index.html"},
     {
-      src: '/api/.*',
+      src: "/api/.*",
       dest: (req, res) => {
-        // remove /api prefix (optional)
-        req.url = req.url.replace(/^\/api/, '');
-
         return proxy.web(req, res, {
-          hostname: 'localhost',
+          hostname: "localhost",
           port: 3000,
         });
       },
