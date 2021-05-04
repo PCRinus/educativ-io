@@ -1,6 +1,7 @@
 <script>
   import Router, { push } from "svelte-spa-router";
   import Navbar from "./layout/Navbar.svelte";
+  import Footer from "./layout/Footer.svelte";
   import Home from "./pages/Home.svelte";
   import Dashboard from "./pages/Dashboard.svelte";
   import Signup from "./pages/Signup.svelte";
@@ -31,5 +32,8 @@
 </script>
 
 <Navbar />
+<div class="content">
+  <Router {routes} />
 
-<Router {routes} />
+  <Footer />
+</div>
