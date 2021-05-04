@@ -21,7 +21,7 @@
     "/profile": Profile,
     "/room/:uuidKey": Room,
     "/categories": Categories,
-    "/categories/:categoryName": Lessons,
+    "/categories/:categoryName/lessons": Lessons,
   };
 
   onMount(() => {

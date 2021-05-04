@@ -10,7 +10,7 @@
   });
 
   function redirectToCategory(categoryName) {
-    push("/categories/" + categoryName);
+    push("/categories/" + categoryName + "/lessons");
   }
 </script>
 
