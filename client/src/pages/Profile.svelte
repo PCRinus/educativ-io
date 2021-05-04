@@ -32,17 +32,19 @@
   <h1>Profile</h1>
   <p>Full profile: {JSON.stringify($userProfile)}</p>
   <div class="columns">
+    {#each $userProfile as profile}
     <div class="column">
-      <p>First name: {JSON.stringify($userProfile.firstName)}</p>
+      <p>First name: {profile.firstName}</p>
     </div>
 
     <div class="column">
-      <p>First name: {JSON.stringify($userProfile.lastName)}</p>
+      <p>Last name: {profile.lastName}</p>
     </div>
 
     <div class="column">
-      <p>First name: {JSON.stringify($userProfile.age)}</p>
+      <p>Age: {profile.age}</p>
     </div>
+    {/each}
   </div>
   <button
     class="button is-link"
