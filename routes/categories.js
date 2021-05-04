@@ -1,11 +1,11 @@
 const { Router } = require("express");
-const Categories = require("../models/Categories");
+const Category = require("../models/Categories");
 
 const router = Router();
 
 router.get("/", async (req, res) => {
   try {
-    const categoriesData = await Categories.find({});
+    const categoriesData = await Category.find({});
     if (!categoriesData) {
       throw new Error("No categories were added, add some!");
     }
@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   const { name, description } = req.body;
-  const newCategory = new Categories({
+  const newCategory = new Category({
     name,
     description,
   });
