@@ -1,5 +1,6 @@
 <script>
   import axios from "axios";
+  import { push } from "svelte-spa-router";
   import { onMount } from "svelte";
   import { lessonCategories } from "../stores";
 
@@ -7,6 +8,10 @@
     const { data } = await axios.get("/api/categories");
     $lessonCategories = data;
   });
+
+  function redirectToCategory(categoryName) {
+    push("/categories/" + categoryName);
+  }
 </script>
 
 <div class="container">
@@ -17,6 +22,12 @@
       <div class="card-content">
         <p class="title">{lessonCategory.name}</p>
         <p class="subtitle">{lessonCategory.description}</p>
+
+        <button
+          class="button is-link"
+          on:click={() => redirectToCategory(lessonCategory.name)}
+          >See all the lessons for the {lessonCategory.name} category</button
+        >
       </div>
     </div>
   {/each}

@@ -10,6 +10,7 @@
   import { user } from "./stores";
   import Profile from "./pages/Profile.svelte";
   import Categories from "./pages/Categories.svelte";
+  import Lessons from "./pages/Lessons.svelte";
 
   const routes = {
     "/": Home,
@@ -19,6 +20,7 @@
     "/profile": Profile,
     "/room/:uuidKey": Room,
     "/categories": Categories,
+    "/categories/:categoryName": Lessons,
   };
 
   onMount(() => {
