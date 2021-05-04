@@ -33,13 +33,13 @@
   </div>
 
   <div class="navbar-menu" class:is-active={isActive}>
-    {#if $user}
       <div class="navbar-start">
+        {#if $user}
         <a href="#/dashboard" class="navbar-item"> Dashboard </a>
-
         <a href="#/profile" class="navbar-item"> Profile </a>
+        {/if}
+        <a href="#/categories" class="navbar-item">Categories</a>
       </div>
-    {/if}
 
     <div class="navbar-end">
       <div class="navbar-item">
