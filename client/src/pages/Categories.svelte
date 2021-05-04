@@ -2,11 +2,14 @@
   import axios from "axios";
   import { push } from "svelte-spa-router";
   import { onMount } from "svelte";
-  import { lessonCategories } from "../stores";
+  import { categories } from "../stores";
+  import AddCategory from "../components/AddCategory.svelte";
+
+  let hideAddCategoryForm = true;
 
   onMount(async () => {
     const { data } = await axios.get("/api/categories");
-    $lessonCategories = data;
+    $categories = data;
   });
 
   function redirectToCategory(categoryName) {
@@ -17,7 +20,7 @@
 <div class="container">
   <h1>Categories</h1>
 
-  {#each $lessonCategories as lessonCategory}
+  {#each $categories as lessonCategory}
     <div class="card">
       <div class="card-content">
         <p class="title">{lessonCategory.name}</p>
@@ -31,4 +34,19 @@
       </div>
     </div>
   {/each}
+
+  <button
+    class="button is-link"
+    on:click={() => (hideAddCategoryForm = !hideAddCategoryForm)}
+    >ADMIN - add category</button
+  >
+  <div class:visibility = {hideAddCategoryForm}>
+    <AddCategory />
+  </div>
 </div>
+
+<style>
+  .visibility {
+    display: none;
+  }
+</style>

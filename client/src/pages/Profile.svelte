@@ -24,7 +24,6 @@
     };
     const response = await axios.post('/api/profile', profile);
     $userProfile = [response.data];
-    console.log(userProfile);
   }
 </script>
 

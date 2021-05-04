@@ -14,6 +14,7 @@ const transactionRoute = require("./routes/transactions");
 const authRoute = require("./routes/auth");
 const profileRoute = require("./routes/profile");
 const categoriesRoute = require("./routes/categories");
+const lessonRoute = require("./routes/lesson");
 
 //webRTC dependencies
 const svelteViewEngine = require("svelte-view-engine");
@@ -56,6 +57,7 @@ app.use("/api/transactions", transactionRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/profile", profileRoute);
 app.use("/api/categories", categoriesRoute);
+app.use("/api/lesson", lessonRoute);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/public"));
