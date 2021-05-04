@@ -7,11 +7,11 @@
   import Signup from "./pages/Signup.svelte";
   import Login from "./pages/Login.svelte";
   import Room from "./pages/Room.svelte";
-  import { onMount } from "svelte";
-  import { user } from "./stores";
   import Profile from "./pages/Profile.svelte";
   import Categories from "./pages/Categories.svelte";
   import Lessons from "./pages/Lessons.svelte";
+  import { onMount } from "svelte";
+  import { user } from "./stores";
 
   const routes = {
     "/": Home,
