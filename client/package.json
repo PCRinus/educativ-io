@@ -1,14 +1,19 @@
 {
   "scripts": {
     "dev": "snowpack dev",
-    "build": "snowpack build",
-    "test": "echo \"This template does not include a test runner by default.\" && exit 1"
+    "build": "cross-env NODE_ENV=production webpack"
   },
   "devDependencies": {
     "@snowpack/plugin-svelte": "^3.6.1",
     "@snowpack/plugin-webpack": "^2.3.1",
+    "cross-env": "^7.0.3",
+    "css-loader": "^5.2.4",
     "http2-proxy": "^5.0.53",
-    "snowpack": "^3.0.1"
+    "mini-css-extract-plugin": "^1.6.0",
+    "snowpack": "^3.0.1",
+    "svelte-loader": "^3.1.1",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0"
   },
   "dependencies": {
     "axios": "^0.21.1",
