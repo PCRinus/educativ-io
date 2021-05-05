@@ -38,6 +38,7 @@
         <a href="#/dashboard" class="navbar-item"> Dashboard </a>
         <a href="#/profile" class="navbar-item"> Profile </a>
         <a href="#/categories" class="navbar-item">Categories</a>
+        <a href="#/new-lesson" class="navbar-item">Add a new lesson</a>
       {/if}
     </div>
 

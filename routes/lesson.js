@@ -16,10 +16,22 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/:slug", async (req, res) => {
+  try {
+    const specificLesson = await Lesson.find({ slug: req.params.slug });
+    if (!specificLesson) {
+      throw new Error("Lesson was not found!");
+    }
+    res.status(200).json(specificLesson);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+});
+
 router.post("/", async (req, res) => {
-  const { name, description, parentCategory, markdown } = req.body;
+  const { title, description, parentCategory, markdown } = req.body;
   const newLesson = new Lesson({
-    name,
+    title,
     description,
     parentCategory,
     markdown,
