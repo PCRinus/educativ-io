@@ -1,9 +1,10 @@
 const { Router } = require("express");
 const Category = require("../models/Categories");
+const { ensureLogin } = require("../middlewares/auth");
 
 const router = Router();
 
-router.get("/", async (req, res) => {
+router.get("/", ensureLogin, async (req, res) => {
   try {
     const categoriesData = await Category.find({});
     if (!categoriesData) {
@@ -15,11 +16,12 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", ensureLogin, async (req, res) => {
   const { name, description } = req.body;
   const newCategory = new Category({
     name,
     description,
+    author: req.user.username,
   });
 
   try {

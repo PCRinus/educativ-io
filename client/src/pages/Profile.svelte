@@ -8,8 +8,6 @@
   let lastName = "";
   let age = 0;
 
-  let profileData = {};
-
   onMount(async () => {
 
     const {data} = await axios.get("/api/profile");

@@ -7,6 +7,10 @@ const CategorySchema = new Schema({
   },
   description: {
       type: String
+  },
+  author: {
+    type: String,
+    required: true,
   }
 });
 

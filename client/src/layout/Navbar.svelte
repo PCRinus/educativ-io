@@ -33,16 +33,19 @@
   </div>
 
   <div class="navbar-menu" class:is-active={isActive}>
-      <div class="navbar-start">
-        {#if $user}
+    <div class="navbar-start">
+      {#if $user}
         <a href="#/dashboard" class="navbar-item"> Dashboard </a>
         <a href="#/profile" class="navbar-item"> Profile </a>
-        {/if}
         <a href="#/categories" class="navbar-item">Categories</a>
-      </div>
+      {/if}
+    </div>
 
     <div class="navbar-end">
       <div class="navbar-item">
+        {#if $user}
+          <h1 class="navbar-greeting">Hello, {$user.username}</h1>
+        {/if}
         <div class="buttons">
           {#if $user}
             <button class="button is-light" on:click={logout}>Logout</button>
@@ -57,3 +60,9 @@
     </div>
   </div>
 </nav>
+
+<style>
+  .navbar-greeting {
+    margin: 0 1rem;
+  }
+</style>
