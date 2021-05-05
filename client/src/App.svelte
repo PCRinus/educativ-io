@@ -34,6 +34,5 @@
 <Navbar />
 <div class="content">
   <Router {routes} />
-
-  <Footer />
 </div>
+<Footer />
