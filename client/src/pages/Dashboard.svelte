@@ -15,6 +15,19 @@
 
 <PageTransitions>
   <div class="container">
+    <h1>Browse available lessons:</h1>
+    <div class="columns">
+      <div class="column">
+        <a href="#/categories" class="button is-link">Browse by category</a>
+      </div>
+      <div class="column">
+        <a href="#/lessons" class="button is-link"
+          >Browse all available lessons</a
+        >
+      </div>
+      <div class="column" />
+    </div>
+    <h1>Connect to a meeting room:</h1>
     <div class="columns">
       <div class="column">
         <button class="button is-link" on:click={generateUUID}>

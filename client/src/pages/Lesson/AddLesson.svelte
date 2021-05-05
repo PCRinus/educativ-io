@@ -1,5 +1,5 @@
 <script>
-  import PageTransitions from "../components/PageTransitions.svelte";
+  import PageTransitions from "../../components/PageTransitions.svelte";
 
   let lessonTitle = "";
   let lessonDescription = "";

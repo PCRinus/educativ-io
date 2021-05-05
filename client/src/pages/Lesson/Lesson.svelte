@@ -1,8 +1,8 @@
 <script>
   import axios from "axios";
   import { onMount } from "svelte";
-  import { lessons, selectedCategory } from "../stores";
-  import PageTransitions from "../components/PageTransitions.svelte";
+  import { lessons, selectedCategory } from "../../stores";
+  import PageTransitions from "../../components/PageTransitions.svelte";
 
   onMount(async () => {
     const { lessonData } = await axios.get("/api/lesson");
