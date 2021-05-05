@@ -21,12 +21,17 @@
     };
     const response = await axios.post("/api/profile", profile);
     $userProfile = [response.data];
+    hideProfileUpdateContainer = !hideProfileUpdateContainer
   }
 </script>
 
 <div class="container">
   <h1>Profile</h1>
-  <p>Full profile: {JSON.stringify($userProfile)}</p>
+  {#if $userProfile.length === 0}
+    <p>No profile has been set up yet, add your profile!</p>
+  {:else}
+    <p>Full profile: {JSON.stringify($userProfile)}</p>
+  {/if}
   <div class="columns">
     {#each $userProfile as profile}
       <div class="column">
