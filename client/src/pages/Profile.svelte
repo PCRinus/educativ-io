@@ -9,8 +9,7 @@
   let age = 0;
 
   onMount(async () => {
-
-    const {data} = await axios.get("/api/profile");
+    const { data } = await axios.get("/api/profile");
     $userProfile = data;
   });
 
@@ -20,7 +19,7 @@
       lastName: lastName,
       age: age,
     };
-    const response = await axios.post('/api/profile', profile);
+    const response = await axios.post("/api/profile", profile);
     $userProfile = [response.data];
   }
 </script>
@@ -30,17 +29,17 @@
   <p>Full profile: {JSON.stringify($userProfile)}</p>
   <div class="columns">
     {#each $userProfile as profile}
-    <div class="column">
-      <p>First name: {profile.firstName}</p>
-    </div>
+      <div class="column">
+        <p>First name: {profile.firstName}</p>
+      </div>
 
-    <div class="column">
-      <p>Last name: {profile.lastName}</p>
-    </div>
+      <div class="column">
+        <p>Last name: {profile.lastName}</p>
+      </div>
 
-    <div class="column">
-      <p>Age: {profile.age}</p>
-    </div>
+      <div class="column">
+        <p>Age: {profile.age}</p>
+      </div>
     {/each}
   </div>
   <button
@@ -48,10 +47,7 @@
     on:click={() => (hideProfileUpdateContainer = !hideProfileUpdateContainer)}
     >Toggle update profile</button
   >
-  <div
-    class="profile-input-container"
-    class:show-profile-container={hideProfileUpdateContainer}
-  >
+  <div class:show-profile-container={hideProfileUpdateContainer}>
     <h1>Update your profile</h1>
 
     <form on:submit|preventDefault={setProfileChanges}>
