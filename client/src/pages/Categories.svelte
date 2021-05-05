@@ -20,6 +20,7 @@
     };
     const response = await axios.post("/api/categories", category);
     $categories = [...$categories, response.data];
+    hideAddCategoryForm = !hideAddCategoryForm
   }
 
   function redirectToCategory(categoryName) {

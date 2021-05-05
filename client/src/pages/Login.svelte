@@ -1,6 +1,6 @@
 <script>
   import axios from "axios";
-  import { user } from "../stores";
+  import { user, userProfile } from "../stores";
   import { push } from "svelte-spa-router";
   let username;
   let password;
@@ -17,7 +17,11 @@
         password,
       });
       $user = data.user;
-      push("/dashboard");
+      if ($userProfile.length === 0) {
+        push("/profile");
+      } else {
+        push("/dashboard");
+      }
     } catch (error) {
       if (error.response.status === 401) {
         username = "";
