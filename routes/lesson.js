@@ -4,7 +4,7 @@ const { ensureLogin } = require("../middlewares/auth");
 
 const router = Router();
 
-router.get("/", async (req, res) => {
+router.get("/", ensureLogin, async (req, res) => {
   try {
     const lessonData = await Lesson.find({});
     if (!lessonData) {
@@ -16,9 +16,9 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:slug", async (req, res) => {
+router.get("/:slug", ensureLogin, async (req, res) => {
   try {
-    const specificLesson = await Lesson.find({ slug: req.params.slug });
+    const specificLesson = await Lesson.findOne({ slug: req.params.slug });
     if (!specificLesson) {
       throw new Error("Lesson was not found!");
     }
@@ -28,7 +28,7 @@ router.get("/:slug", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", ensureLogin, async (req, res) => {
   const { title, description, parentCategory, markdown } = req.body;
   const newLesson = new Lesson({
     title,
@@ -47,5 +47,17 @@ router.post("/", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
+router.delete("/:id", ensureLogin, async (req, res) => {
+  try {
+    const deletedLesson = await Lesson.findByIdAndDelete(req.params.id)
+    if(!deletedLesson) {
+      throw new Error("There was an error deleting this lesson");
+    }
+    res.status(200).json(deletedLesson);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+})
 
 module.exports = router;
