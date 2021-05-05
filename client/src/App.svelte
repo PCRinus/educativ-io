@@ -10,6 +10,7 @@
   import Profile from "./pages/Profile.svelte";
   import Categories from "./pages/Categories.svelte";
   import Lessons from "./pages/Lessons.svelte";
+  import AddLesson from "./pages/AddLesson.svelte";
   import { onMount } from "svelte";
   import { user } from "./stores";
 
@@ -22,6 +23,7 @@
     "/room/:uuidKey": Room,
     "/categories": Categories,
     "/categories/:categoryName/lessons": Lessons,
+    "/new-lesson": AddLesson,
   };
 
   onMount(() => {

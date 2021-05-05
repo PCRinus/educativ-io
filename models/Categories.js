@@ -11,6 +11,9 @@ const CategorySchema = new Schema({
   author: {
     type: String,
     required: true,
+  },
+  numberOfLessons: {
+    type: Number,
   }
 });
 

@@ -7,11 +7,18 @@ const LessonSchema = new Schema({
   },
   description: {
     type: String,
-    required: true,
   },
   parentCategory: {
     type: String,
     required: true,
+  },
+  markdown: {
+    type: String,
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
   },
 });
 

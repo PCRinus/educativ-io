@@ -6,7 +6,7 @@ const router = Router();
 
 router.get("/", async (req, res) => {
   try {
-    const lessonData = await Lesson.find({parentCategory: req.parentCategory});
+    const lessonData = await Lesson.find({});
     if (!lessonData) {
       throw new Error("No lessons were added, add some!");
     }
@@ -17,11 +17,12 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { name, description, parentCategory } = req.body;
+  const { name, description, parentCategory, markdown } = req.body;
   const newLesson = new Lesson({
     name,
     description,
-    parentCategory
+    parentCategory,
+    markdown,
   });
 
   try {
