@@ -1,7 +1,10 @@
 <script>
-    import {uuidKey} from '../stores';
+  import { uuidKey } from "../stores";
+  import PageTransitions from "../components/PageTransitions.svelte";
 </script>
 
-<div class="container">
-  <h1>Room {$uuidKey}</h1>
-</div>
+<PageTransitions>
+  <div class="container">
+    <h1>Room {$uuidKey}</h1>
+  </div>
+</PageTransitions>
