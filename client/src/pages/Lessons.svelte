@@ -1,7 +1,7 @@
 <script>
   import axios from "axios";
   import { onMount } from "svelte";
-  import { lessons } from "../stores";
+  import { lessons, selectedCategory } from "../stores";
 
   onMount(async () => {
     const { lessonData } = await axios.get("/api/lesson");
@@ -10,5 +10,5 @@
 </script>
 
 <div class="container">
-  <h1>Available Lessons:</h1>
+  <h1>Available lessons for {$selectedCategory}</h1>
 </div>

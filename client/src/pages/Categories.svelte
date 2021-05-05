@@ -2,7 +2,7 @@
   import axios from "axios";
   import { push } from "svelte-spa-router";
   import { onMount } from "svelte";
-  import { categories } from "../stores";
+  import { categories, selectedCategory } from "../stores";
 
   let hideAddCategoryForm = true;
   let categoryName = "";
@@ -24,12 +24,17 @@
   }
 
   function redirectToCategory(categoryName) {
+    $selectedCategory = categoryName;
     push("/categories/" + categoryName + "/lessons");
   }
 </script>
 
 <div class="container">
   <h1>Categories</h1>
+
+  {#if $categories.length === 0}
+    <h1>No categories are added, add some!</h1>
+  {/if}
 
   {#each $categories as lessonCategory}
     <div class="card">
