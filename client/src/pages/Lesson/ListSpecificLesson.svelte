@@ -4,10 +4,11 @@
   import { lessons, selectedCategory } from "../../stores";
   import PageTransitions from "../../components/PageTransitions.svelte";
 
-  onMount(async () => {
-    const { lessonData } = await axios.get("/api/lesson");
-    $lessons = lessonData;
-  });
+  //TODO: there is a bug with the onMount that is in then other listLesson endpoint
+  // onMount(async () => {
+  //   const { lessonData } = await axios.get("/api/lesson");
+  //   $lessons = lessonData;
+  // });
 </script>
 
 <PageTransitions>
