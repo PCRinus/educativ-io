@@ -44,7 +44,7 @@
     <div class="navbar-end">
       <div class="navbar-item">
         {#if $user}
-          <h1 class="navbar-greeting">Hello, {$user.username}</h1>
+          <h1 class="navbar-greeting">Hello, {$user.username}!</h1>
         {/if}
         <div class="buttons">
           {#if $user}
