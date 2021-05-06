@@ -3,8 +3,8 @@
 </script>
 
 <div
-  in:fly={{ y: -50, duration: 250, delay: 300 }}
-  out:fly={{ y: -50, duration: 250 }}
+  in:fly={{ y: -100, duration: 300, delay: 300 }}
+  out:fly={{ y: -100, duration: 300 }}
 >
   <slot />
 </div>
