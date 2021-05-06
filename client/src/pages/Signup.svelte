@@ -20,7 +20,7 @@
         password,
       });
       $user = data.user;
-      push("/profile");
+      push("/dashboard");
     } catch (error) {
       if (error.response.data.message === "User already exists") {
         username = "";

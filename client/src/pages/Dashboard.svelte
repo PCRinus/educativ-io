@@ -1,11 +1,12 @@
 <script>
   import { push } from "svelte-spa-router";
-  import { uuidKey } from "../stores";
+  import { uuidKey, uuidRedirectButton } from "../stores";
   import { v4 as uuidv4 } from "uuid";
   import PageTransitions from "../components/PageTransitions.svelte";
 
   function generateUUID() {
     $uuidKey = uuidv4();
+    $uuidRedirectButton = true
   }
 
   function redirectToRoom() {
@@ -36,7 +37,7 @@
       </div>
 
       <div class="column">
-        <button class="button is-link" on:click={redirectToRoom}>
+        <button class="button is-link" on:click={redirectToRoom} disabled={!$uuidRedirectButton}>
           Redirect to meeting room
         </button>
       </div>

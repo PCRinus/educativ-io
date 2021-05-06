@@ -18,11 +18,7 @@
         password,
       });
       $user = data.user;
-      if ($userProfile.length === 0) {
-        push("/profile");
-      } else {
-        push("/dashboard");
-      }
+      push("/dashboard");
     } catch (error) {
       if (error.response.status === 401) {
         username = "";
