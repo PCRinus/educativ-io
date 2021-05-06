@@ -1,13 +1,13 @@
 <script>
   import axios from "axios";
   import { onMount } from "svelte";
-  import { lessons, selectedLesson } from "../../stores";
+  import { lessonsData, selectedLesson } from "../../stores";
   import { push } from "svelte-spa-router";
   import PageTransitions from "../../components/PageTransitions.svelte";
 
   onMount(async () => {
     const { data } = await axios.get("/api/lesson");
-    $lessons = data;
+    $lessonsData = data;
   });
 
   function redirectToLesson(slug) {
@@ -19,16 +19,16 @@
 <PageTransitions>
   <div class="container">
     <h1>All lessons</h1>
-    {#each $lessons as lesson}
+    {#each $lessonsData as lessonData}
       <div class="card">
         <div class="card-content">
-          <p class="title">{lesson.title}</p>
-          <p class="subtitle">{lesson.description}</p>
-          <p class="subtitle">{lesson.createdAt}</p>
+          <p class="title">{lessonData.title}</p>
+          <p class="subtitle">{lessonData.description}</p>
+          <p class="subtitle">{lessonData.createdAt}</p>
 
           <button
             class="button is-link"
-            on:click={() => redirectToLesson(lesson.slug)}
+            on:click={() => redirectToLesson(lessonData.slug)}
             >Go to lesson</button
           >
         </div>

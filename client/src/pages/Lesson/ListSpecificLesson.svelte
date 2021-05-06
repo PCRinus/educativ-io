@@ -1,7 +1,7 @@
 <script>
   import axios from "axios";
   import { onMount } from "svelte";
-  import { lessons, selectedCategory } from "../../stores";
+  import { lessonsData, selectedCategory } from "../../stores";
   import PageTransitions from "../../components/PageTransitions.svelte";
 
   //TODO: there is a bug with the onMount that is in then other listLesson endpoint

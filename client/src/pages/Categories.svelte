@@ -2,7 +2,7 @@
   import axios from "axios";
   import { push } from "svelte-spa-router";
   import { onMount } from "svelte";
-  import { categories, selectedCategory } from "../stores";
+  import { categoriesData, selectedCategory } from "../stores";
   import PageTransitions from "../components/PageTransitions.svelte";
 
   let hideAddCategoryForm = true;
@@ -11,7 +11,7 @@
 
   onMount(async () => {
     const { data } = await axios.get("/api/categories");
-    $categories = data;
+    $categoriesData = data;
   });
 
   async function addCategory() {
@@ -20,7 +20,7 @@
       description: categoryDescription,
     };
     const response = await axios.post("/api/categories", category);
-    $categories = [...$categories, response.data];
+    $categoriesData = [...$categoriesData, response.data];
     hideAddCategoryForm = !hideAddCategoryForm;
   }
 
@@ -34,21 +34,21 @@
   <div class="container">
     <h1>Categories</h1>
 
-    {#if $categories.length === 0}
+    {#if $categoriesData.length === 0}
       <h1>No categories are added, add some!</h1>
     {/if}
 
-    {#each $categories as lessonCategory}
+    {#each $categoriesData as categoryData}
       <div class="card">
         <div class="card-content">
-          <p class="title">{lessonCategory.name}</p>
-          <p class="subtitle">{lessonCategory.description}</p>
-          <p class="subtitle">Author: {lessonCategory.author}</p>
+          <p class="title">{categoryData.name}</p>
+          <p class="subtitle">{categoryData.description}</p>
+          <p class="subtitle">Author: {categoryData.author}</p>
 
           <button
             class="button is-link"
-            on:click={() => redirectToCategory(lessonCategory.name)}
-            >See all the lessons for the {lessonCategory.name} category</button
+            on:click={() => redirectToCategory(categoryData.name)}
+            >See all the lessons for the {categoryData.name} category</button
           >
         </div>
       </div>
