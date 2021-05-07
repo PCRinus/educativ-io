@@ -29,13 +29,14 @@ const LessonSchema = new Schema({
   },
 });
 
-LessonSchema.pre("validate", function() {
+LessonSchema.pre("validate", function(next) {
   if(this.title) {
     this.slug = slugify(this.title, {
       lower: true,
       strict: true,
     })
   }
+  next();
 })
 
 const Lesson = model("lesson", LessonSchema);
