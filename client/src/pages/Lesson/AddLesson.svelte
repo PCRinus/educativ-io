@@ -9,7 +9,6 @@
   let lessonTitle = "";
   let lessonDescription = "";
   let lessonParentCategory = "";
-  // let lessonMarkdown = "";
   let slug = "";
 
   let lessonMarkdown = `
@@ -91,21 +90,16 @@
         />
       </div>
 
-      <!-- <div class="field">
-        <label for="" class="label">Markdown</label>
-        <input type="text" class="input" bind:value={lessonMarkdown} required />
-      </div> -->
-
       <label for="" class="label">Markdown</label>
       <div class="markdown-editor">
         <div class="left-panel">
-            <textarea bind:value={lessonMarkdown} class="source"></textarea>
+          <textarea bind:value={lessonMarkdown} class="source" />
         </div>
-    
+
         <div class="right-panel">
-            <div class="output">{@html markdown}</div>
+          <div class="output">{@html markdown}</div>
         </div>
-    </div>
+      </div>
 
       <div class="control">
         <input type="submit" class="button is-link" value="Add lesson" />
@@ -115,35 +109,36 @@
 </PageTransitions>
 
 <style>
-    .markdown-editor {
-        width: 100%;
-        display: flex;
-        align-items:flex-start;
-        justify-content: space-evenly;
-    }
-    .left-panel, .right-panel {
-        width: 50%;
-        border: solid 1px;
-        border-color: #b5b5b5;
-        border-radius: 4px;
-        height: 85vh;
-        background: #ffffff;
-    }
-    .right-panel {
-        overflow: auto;
-    }
-    .source {
-        border: none;
-        width: 100%;
-        height: 100%;
-        background: #2a2e41;
-        color: #ffffff;
-    }
-    .source:focus {
-        outline: none;
-    }
-    .output {
-        width: 100%;
-        padding: 0 2em;
-    }
+  .markdown-editor {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+  }
+  .left-panel,
+  .right-panel {
+    width: 50%;
+    border: solid 1px;
+    border-color: #b5b5b5;
+    border-radius: 4px;
+    height: 85vh;
+    background: #ffffff;
+  }
+  .right-panel {
+    overflow: auto;
+  }
+  .source {
+    border: none;
+    width: 100%;
+    height: 100%;
+    background: #2a2e41;
+    color: #ffffff;
+  }
+  .source:focus {
+    outline: none;
+  }
+  .output {
+    width: 100%;
+    padding: 0 2em;
+  }
 </style>
