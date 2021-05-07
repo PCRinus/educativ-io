@@ -9,9 +9,10 @@
   import Room from "./pages/Room.svelte";
   import Profile from "./pages/Profile.svelte";
   import Categories from "./pages/Categories.svelte";
-  import ListSpecificLesson from "./pages/Lesson/ListSpecificLesson.svelte";
   import AddLesson from "./pages/Lesson/AddLesson.svelte";
   import ListAllLessons from "./pages/Lesson/ListAllLessons.svelte";
+  import ListAllLessonsInsideCategory from "./pages/Lesson/ListAllLessonsInsideCategory.svelte";
+  import ListSpecificLesson from "./pages/Lesson/ListSpecificLesson.svelte";
   import { onMount } from "svelte";
   import { user } from "./stores";
 
@@ -23,9 +24,10 @@
     "/profile": Profile,
     "/room/:uuidKey": Room,
     "/categories": Categories,
-    "/categories/:categoryName/lessons": ListSpecificLesson,
-    "/lessons": ListAllLessons,
     "/new-lesson": AddLesson,
+    "/lessons": ListAllLessons,
+    "/categories/:categoryName": ListAllLessonsInsideCategory,
+    "/lessons/:slug": ListSpecificLesson
   };
 
   onMount(() => {

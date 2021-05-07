@@ -26,7 +26,7 @@
 
   function redirectToCategory(categoryName) {
     $selectedCategory = categoryName;
-    push("/categories/" + categoryName + "/lessons");
+    push("/categories/" + categoryName);
   }
 </script>
 

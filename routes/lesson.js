@@ -28,6 +28,18 @@ router.get("/:slug", ensureLogin, async (req, res) => {
   }
 });
 
+router.get("/fromCategory/:parentCategory", ensureLogin, async (req, res)=> {
+  try {
+    const categoryLessonsData = await Lesson.find({parentCategory: req.params.parentCategory});
+    if(!categoryLessonsData) {
+      throw new Error("The category doesn't have any lessons!");
+    }
+    res.status(200).json(categoryLessonsData);
+  } catch (error) {
+    res.status(404).json({message: error.message});
+  }
+});
+
 router.post("/", ensureLogin, async (req, res) => {
   const { title, description, parentCategory, markdown } = req.body;
   const newLesson = new Lesson({
