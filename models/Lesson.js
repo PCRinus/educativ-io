@@ -1,4 +1,6 @@
 const { Schema, model } = require("mongoose");
+const { default: slugify } = require("slugify");
+const sulify = require("slugify");
 
 const LessonSchema = new Schema({
   title: {
@@ -20,7 +22,21 @@ const LessonSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  slug: {
+    type: String,
+    required: true,
+    unique: true,
+  },
 });
+
+LessonSchema.pre("validate", function() {
+  if(this.title) {
+    this.slug = slugify(this.title, {
+      lower: true,
+      strict: true,
+    })
+  }
+})
 
 const Lesson = model("lesson", LessonSchema);
 
