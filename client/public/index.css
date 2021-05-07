@@ -19,3 +19,7 @@ body {
 .custom-footer{
   flex-shrink: 0;
 }
+
+.container {
+  max-width: 75ch !important;
+}

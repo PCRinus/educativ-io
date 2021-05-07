@@ -1,18 +1,20 @@
 <script>
   import axios from "axios";
   import { onMount } from "svelte";
-  import { lessonsData, selectedCategory } from "../../stores";
+  import { currentLessonData, selectedLessonSlug } from "../../stores";
   import PageTransitions from "../../components/PageTransitions.svelte";
 
-  //TODO: there is a bug with the onMount that is in then other listLesson endpoint
-  // onMount(async () => {
-  //   const { lessonData } = await axios.get("/api/lesson");
-  //   $lessons = lessonData;
-  // });
+  onMount(async () => {
+    const { data } = await axios.get("/api/lesson/" + $selectedLessonSlug);
+    $currentLessonData = data;
+  });
 </script>
 
 <PageTransitions>
   <div class="container">
-    <h1>Available lessons for {$selectedCategory}</h1>
+    <h1>{$currentLessonData.title}</h1>
+    <h4>{$currentLessonData.description}</h4>
+    <h4>{$currentLessonData.createdAt}</h4>
+    <p>{$currentLessonData.markdown}</p>
   </div>
 </PageTransitions>
