@@ -35,6 +35,7 @@
         <div class="card-content">
           <p class="title">{filteredLessonData.title}</p>
           <p class="subtitle">{filteredLessonData.description}</p>
+          <p class="subtitle">Author: {filteredLessonData.author}</p>
           <p class="subtitle">{filteredLessonData.createdAt}</p>
 
           <button

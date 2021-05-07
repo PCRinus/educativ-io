@@ -24,6 +24,7 @@
         <div class="card-content">
           <p class="title">{lessonData.title}</p>
           <p class="subtitle">{lessonData.description}</p>
+          <p class="subtitle">Author: {lessonData.author}</p>
           <p class="subtitle">{lessonData.createdAt}</p>
 
           <button
