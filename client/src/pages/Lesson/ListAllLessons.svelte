@@ -1,7 +1,7 @@
 <script>
   import axios from "axios";
   import { onMount } from "svelte";
-  import { lessonsData, selectedLesson } from "../../stores";
+  import { lessonsData, selectedLessonSlug } from "../../stores";
   import { push } from "svelte-spa-router";
   import PageTransitions from "../../components/PageTransitions.svelte";
 
@@ -11,7 +11,7 @@
   });
 
   function redirectToLesson(slug) {
-    $selectedLesson = slug;
+    $selectedLessonSlug = slug;
     push("/lessons/" + slug);
   }
 </script>

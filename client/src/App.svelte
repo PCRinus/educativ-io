@@ -27,6 +27,7 @@
     "/new-lesson": AddLesson,
     "/lessons": ListAllLessons,
     "/categories/:categoryName": ListAllLessonsInsideCategory,
+    "/categories/:categoryName/:slug": ListSpecificLesson,
     "/lessons/:slug": ListSpecificLesson
   };
 

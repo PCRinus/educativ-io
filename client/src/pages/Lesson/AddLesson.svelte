@@ -26,6 +26,10 @@
         <label for="" class="label">Markdown</label>
         <input type="text" class="input" bind:value={markdown} required />
       </div>
+
+      <div class="control">
+        <input type="submit" class="button is-link" value="Add lesson" />
+      </div>
     </form>
   </div>
 </PageTransitions>

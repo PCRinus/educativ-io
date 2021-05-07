@@ -7,4 +7,5 @@ export const userProfile = writable([]);
 export const categoriesData = writable([]);
 export const selectedCategory = writable('');
 export const lessonsData = writable([]);
-export const selectedLesson = writable('');
+export const filteredLessonsData = writable([]);
+export const selectedLessonSlug = writable('');

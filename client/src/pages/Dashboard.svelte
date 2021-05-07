@@ -6,7 +6,7 @@
 
   function generateUUID() {
     $uuidKey = uuidv4();
-    $uuidRedirectButton = true
+    $uuidRedirectButton = true;
   }
 
   function redirectToRoom() {
@@ -21,12 +21,16 @@
       <div class="column">
         <a href="#/categories" class="button is-link">Browse by category</a>
       </div>
+
       <div class="column">
         <a href="#/lessons" class="button is-link"
           >Browse all available lessons</a
         >
       </div>
-      <div class="column" />
+
+      <div class="column">
+        <a href="#/new-lesson" class="button is-link">Add a new lesson</a>
+      </div>
     </div>
     <h1>Connect to a meeting room:</h1>
     <div class="columns">
@@ -37,7 +41,11 @@
       </div>
 
       <div class="column">
-        <button class="button is-link" on:click={redirectToRoom} disabled={!$uuidRedirectButton}>
+        <button
+          class="button is-link"
+          on:click={redirectToRoom}
+          disabled={!$uuidRedirectButton}
+        >
           Redirect to meeting room
         </button>
       </div>
