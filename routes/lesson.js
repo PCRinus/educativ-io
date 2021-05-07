@@ -45,6 +45,7 @@ router.post("/", ensureLogin, async (req, res) => {
   const newLesson = new Lesson({
     title,
     description,
+    author: req.user.username,
     parentCategory,
     markdown,
   });
