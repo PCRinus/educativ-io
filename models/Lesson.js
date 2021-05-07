@@ -10,6 +10,10 @@ const LessonSchema = new Schema({
   description: {
     type: String,
   },
+  author: {
+    type: String,
+    required: true,
+  },
   parentCategory: {
     type: String,
     required: true,
