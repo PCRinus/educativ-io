@@ -32,7 +32,7 @@
 </script>
 
 <PageTransitions>
-  <div class="container">
+  <div class="container container-custom">
     <div class="section">
       <h1 class="title">Sign Up</h1>
       <hr />

@@ -10,3 +10,8 @@ export const lessonsData = writable([]);
 export const filteredLessonsData = writable([]);
 export const currentLessonData = writable([]);
 export const selectedLessonSlug = writable('');
+
+export const currentLessonTitle = writable('');
+export const currentLessonDescription = writable('');
+export const currentLessonCategory = writable([]);
+export const currentLessonMarkdown = writable('');

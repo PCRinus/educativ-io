@@ -10,6 +10,7 @@
   import Profile from "./pages/Profile.svelte";
   import Categories from "./pages/Categories.svelte";
   import AddLesson from "./pages/Lesson/AddLesson.svelte";
+  import AddLessonMarkdown from "./pages/Lesson/AddLessonMarkdown.svelte";
   import ListAllLessons from "./pages/Lesson/ListAllLessons.svelte";
   import ListAllLessonsInsideCategory from "./pages/Lesson/ListAllLessonsInsideCategory.svelte";
   import ListSpecificLesson from "./pages/Lesson/ListSpecificLesson.svelte";
@@ -25,6 +26,7 @@
     "/room/:uuidKey": Room,
     "/categories": Categories,
     "/new-lesson": AddLesson,
+    "/new-lesson/markdown": AddLessonMarkdown,
     "/lessons": ListAllLessons,
     "/categories/:categoryName": ListAllLessonsInsideCategory,
     "/categories/:categoryName/:slug": ListSpecificLesson,

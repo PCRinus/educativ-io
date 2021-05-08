@@ -1,39 +1,19 @@
 <script>
   import axios from "axios";
   import { onMount } from "svelte";
-  import { lessonsData, selectedLessonSlug } from "../../stores";
-  import { push } from "svelte-spa-router";
+  import { lessonsData } from "../../stores";
+  import LessonList from "../../components/LessonList.svelte";
   import PageTransitions from "../../components/PageTransitions.svelte";
 
   onMount(async () => {
     const { data } = await axios.get("/api/lesson");
     $lessonsData = data;
   });
-
-  function redirectToLesson(slug) {
-    $selectedLessonSlug = slug;
-    push("/lessons/" + slug);
-  }
 </script>
 
 <PageTransitions>
-  <div class="container">
+  <div class="container container-custom">
     <h1>All lessons</h1>
-    {#each $lessonsData as lessonData}
-      <div class="card">
-        <div class="card-content">
-          <p class="title">{lessonData.title}</p>
-          <p class="subtitle">{lessonData.description}</p>
-          <p class="subtitle">Author: {lessonData.author}</p>
-          <p class="subtitle">{lessonData.createdAt}</p>
-
-          <button
-            class="button is-link"
-            on:click={() => redirectToLesson(lessonData.slug)}
-            >Go to lesson</button
-          >
-        </div>
-      </div>
-    {/each}
+    <LessonList lessonList={$lessonsData} />
   </div>
 </PageTransitions>

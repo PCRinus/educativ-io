@@ -30,7 +30,7 @@
 </script>
 
 <PageTransitions>
-  <div class="container">
+  <div class="container container-custom">
     <div class="section">
       <h1 class="title">Log In</h1>
       <hr />

@@ -27,7 +27,7 @@
 </script>
 
 <PageTransitions>
-  <div class="container">
+  <div class="container container-custom">
     <h1>Profile</h1>
     {#if $userProfile.length === 0}
       <p>No profile has been set up yet, add your profile!</p>
