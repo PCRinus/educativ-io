@@ -12,10 +12,6 @@
     $currentLessonData = data;
     markdown = marked($currentLessonData.markdown);
   });
-
-  let asdf = $currentLessonData;
-
-  let promise = onMount();
 </script>
 
 <PageTransitions>
