@@ -20,6 +20,6 @@ body {
   flex-shrink: 0;
 }
 
-/* .container {
+.container {
   max-width: 75ch !important;
-} */
+}
