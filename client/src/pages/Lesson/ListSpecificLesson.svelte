@@ -14,7 +14,7 @@
 </script>
 
 <PageTransitions>
-  <div class="container">
+  <div class="container container-custom">
     <h1>{$currentLessonData.title}</h1>
     <h4>{$currentLessonData.description}</h4>
     <h4>{$currentLessonData.createdAt}</h4>

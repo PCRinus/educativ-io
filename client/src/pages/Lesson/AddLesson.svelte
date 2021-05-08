@@ -21,7 +21,7 @@
 </script>
 
 <PageTransitions>
-  <div class="container">
+  <div class="container container-custom">
     <h1>Add lesson details</h1>
     <form on:submit|preventDefault={redirectToEditor}>
       <div class="field">

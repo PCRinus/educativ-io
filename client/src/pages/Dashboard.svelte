@@ -15,7 +15,7 @@
 </script>
 
 <PageTransitions>
-  <div class="container">
+  <div class="container container-custom">
     <h1>Browse available lessons:</h1>
     <div class="columns">
       <div class="column">

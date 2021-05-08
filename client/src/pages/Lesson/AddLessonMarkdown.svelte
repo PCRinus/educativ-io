@@ -1,12 +1,11 @@
 <script>
   import {
-    lessonsData,
     currentLessonTitle,
     currentLessonDescription,
     currentLessonCategory,
     currentLessonMarkdown,
   } from "../../stores";
-  import { onMount, onDestroy } from "svelte";
+  import { onDestroy } from "svelte";
   import PageTransitions from "../../components/PageTransitions.svelte";
 
   onDestroy(()=> {

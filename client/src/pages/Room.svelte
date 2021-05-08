@@ -10,7 +10,7 @@
 </script>
 
 <PageTransitions>
-  <div class="container">
+  <div class="container container-custom">
     <h1>Room {$uuidKey}</h1>
   </div>
 </PageTransitions>

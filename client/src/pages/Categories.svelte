@@ -31,7 +31,7 @@
 </script>
 
 <PageTransitions>
-  <div class="container">
+  <div class="container container-custom">
     <h1>Categories</h1>
 
     {#if $categoriesData.length === 0}
