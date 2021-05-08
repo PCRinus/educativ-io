@@ -2,7 +2,13 @@
   import { push } from "svelte-spa-router";
   import { uuidKey, uuidRedirectButton } from "../stores";
   import { v4 as uuidv4 } from "uuid";
+  import { onDestroy } from "svelte";
   import PageTransitions from "../components/PageTransitions.svelte";
+
+  onDestroy(() => {
+    $uuidKey = "";
+    $uuidRedirectButton = false;
+  })
 
   function generateUUID() {
     $uuidKey = uuidv4();

@@ -5,7 +5,7 @@
   import marked from "marked";
   import PageTransitions from "../../components/PageTransitions.svelte";
 
-  $: markdown = marked($currentLessonData.markdown);
+  // $: markdown = marked($currentLessonData.markdown);
 
   onMount(async () => {
     const { data } = await axios.get("/api/lesson/" + $selectedLessonSlug);
@@ -18,6 +18,6 @@
     <h1>{$currentLessonData.title}</h1>
     <h4>{$currentLessonData.description}</h4>
     <h4>{$currentLessonData.createdAt}</h4>
-    <p>{@html markdown}</p>
+    <!-- <p>{@html markdown}</p> -->
   </div>
 </PageTransitions>

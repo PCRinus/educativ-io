@@ -18,8 +18,6 @@
   function redirectToEditor() {
     push("/new-lesson/markdown");
   }
-
-  let selected;
 </script>
 
 <PageTransitions>
@@ -53,7 +51,7 @@
           class="category-selector"
           bind:value={$currentLessonCategory}
         >
-        <option disabled selected>Please choose a category</option>
+        <option disabled selected value=''>Please choose a category</option>
           {#each $categoriesData as category}
             <option value={category}>
               {category.name}
