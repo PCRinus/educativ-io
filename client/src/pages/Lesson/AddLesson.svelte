@@ -64,7 +64,7 @@
         <input
           type="submit"
           class="button is-link go-to-editor"
-          value="Go to editor > "
+          value="Go to editor"
         />
       </div>
     </form>
