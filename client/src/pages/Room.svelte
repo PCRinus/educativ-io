@@ -1,6 +1,12 @@
 <script>
-  import { uuidKey } from "../stores";
+  import { uuidKey, uuidRedirectButton} from "../stores";
+  import { onDestroy } from "svelte";
   import PageTransitions from "../components/PageTransitions.svelte";
+
+  onDestroy(() => {
+    $uuidKey = "";
+    $uuidRedirectButton = false;
+  })
 </script>
 
 <PageTransitions>
