@@ -8,6 +8,7 @@
   let firstName = "";
   let lastName = "";
   let age = 0;
+  let svgPath = "images/male-user.svg";
 
   onMount(async () => {
     const { data } = await axios.get("/api/profile");
@@ -32,23 +33,20 @@
     {#if $userProfile.length === 0}
       <p>No profile has been set up yet, add your profile!</p>
     {:else}
-      <p>Full profile: {JSON.stringify($userProfile)}</p>
+      <div class="columns">
+        {#each $userProfile as profile}
+          <div class="column is-one-third">
+            <img src={svgPath} alt="User profile" />
+            <p>First name: {profile.firstName}</p>
+            <p>Last name: {profile.lastName}</p>
+            <p>Age: {profile.age}</p>
+          </div>
+          <div class="column">
+            <h1>Added lessons</h1>
+          </div>
+        {/each}
+      </div>
     {/if}
-    <div class="columns">
-      {#each $userProfile as profile}
-        <div class="column">
-          <p>First name: {profile.firstName}</p>
-        </div>
-
-        <div class="column">
-          <p>Last name: {profile.lastName}</p>
-        </div>
-
-        <div class="column">
-          <p>Age: {profile.age}</p>
-        </div>
-      {/each}
-    </div>
     <button
       class="button is-link"
       on:click={() =>
@@ -89,6 +87,10 @@
 </PageTransitions>
 
 <style>
+  img {
+    height: 10rem;
+    width: 10rem;
+  }
   .show-profile-container {
     display: none;
   }
