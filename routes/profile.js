@@ -4,9 +4,9 @@ const { ensureLogin } = require("../middlewares/auth");
 
 const router = Router();
 
-router.get("/", ensureLogin, async (req, res) => {
+router.get("/:userName", ensureLogin, async (req, res) => {
   try {
-    const profileData = await Profile.find({ user_id: req.user._id })
+    const profileData = await Profile.find({ userName: req.params.userName })
       .sort({ _id: -1 })
       .limit(1);
     if (!profileData) {

@@ -40,6 +40,18 @@ router.get("/fromCategory/:parentCategory", ensureLogin, async (req, res)=> {
   }
 });
 
+router.get("/fromUser/:author", ensureLogin, async (req, res)=> {
+  try {
+    const userLessonsData = await Lesson.find({author: req.params.author});
+    if(!userLessonsData) {
+      throw new Error("The user didn't add any lessons");
+    }
+    res.status(200).json(userLessonsData);
+  } catch (error) {
+    res.status(404).json({message: error.message});
+  }
+});
+
 router.post("/", ensureLogin, async (req, res) => {
   const { title, description, parentCategory, markdown } = req.body;
   const newLesson = new Lesson({
