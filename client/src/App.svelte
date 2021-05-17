@@ -11,8 +11,8 @@
   import Settings from "./pages/Settings.svelte";
   import Room from "./pages/Room.svelte";
   import Categories from "./pages/Categories.svelte";
-  import UserProfile from "./pages/Profile/UserProfile.svelte";
-  import PersonalProfile from "./pages/Profile/PersonalProfile.svelte";
+  import UserProfile from "./pages/Profiles/UserProfile.svelte";
+  import PersonalProfile from "./pages/Profiles/PersonalProfile.svelte";
   import AddLesson from "./pages/Lesson/AddLesson.svelte";
   import AddLessonMarkdown from "./pages/Lesson/AddLessonMarkdown.svelte";
   import ListAllLessons from "./pages/Lesson/ListAllLessons.svelte";
