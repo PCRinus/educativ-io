@@ -1,6 +1,6 @@
 <script>
   import axios from "axios";
-  import { user, userProfile } from "../stores";
+  import { user, you, userProfile } from "../stores";
   import { push } from "svelte-spa-router";
   import PageTransitions from "../components/PageTransitions.svelte";
   let username;
@@ -18,6 +18,7 @@
         password,
       });
       $user = data.user;
+      $you = data.user.username;
       push("/dashboard");
     } catch (error) {
       if (error.response.status === 401) {

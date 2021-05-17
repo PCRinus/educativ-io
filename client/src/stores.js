@@ -1,9 +1,12 @@
 import {writable, derived} from 'svelte/store';
 
+export const you = writable('');
+
 export const user = writable(null);
 export const uuidKey = writable('');
 export const uuidRedirectButton = writable(false);
 export const userProfile = writable([]);
+export const userName = writable('');
 export const categoriesData = writable([]);
 export const selectedCategory = writable('');
 export const lessonsData = writable([]);

@@ -1,6 +1,6 @@
 <script>
   import axios from "axios";
-  import { user } from "../stores";
+  import { user, you } from "../stores";
   import { push } from "svelte-spa-router";
   import PageTransitions from "../components/PageTransitions.svelte";
 
@@ -20,6 +20,7 @@
         password,
       });
       $user = data.user;
+      $you = data.user.username;
       push("/dashboard");
     } catch (error) {
       if (error.response.data.message === "User already exists") {
