@@ -36,7 +36,7 @@
     <div class="navbar-start">
       {#if $user}
         <a href="#/dashboard" class="navbar-item"> Dashboard </a>
-        <a href="#/profile" class="navbar-item"> Profile </a>
+        <a href="#/profile/you" class="navbar-item"> Profile </a>
         <!-- <a href="#/categories" class="navbar-item">Categories</a>
         <a href="#/new-lesson" class="navbar-item">Add a new lesson</a> -->
       {/if}

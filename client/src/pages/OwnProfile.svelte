@@ -1,7 +1,8 @@
 <script>
   import axios from "axios";
   import { onMount } from "svelte";
-  import { userProfile } from "../stores";
+  import { userProfile, lessonsData } from "../stores";
+  import LessonList from "../components/LessonList.svelte";
   import PageTransitions from "../components/PageTransitions.svelte";
 
   let hideProfileUpdateContainer = true;
@@ -29,7 +30,6 @@
 
 <PageTransitions>
   <div class="container container-custom">
-    <h1>Profile</h1>
     {#if $userProfile.length === 0}
       <p>No profile has been set up yet, add your profile!</p>
     {:else}
@@ -40,19 +40,20 @@
             <p>First name: {profile.firstName}</p>
             <p>Last name: {profile.lastName}</p>
             <p>Age: {profile.age}</p>
+            <button
+            class="button is-link"
+            on:click={() =>
+              (hideProfileUpdateContainer = !hideProfileUpdateContainer)}
+            >Toggle update profile</button
+          >
           </div>
           <div class="column">
             <h1>Added lessons</h1>
+            <LessonList lessonList={$lessonsData} />
           </div>
         {/each}
       </div>
     {/if}
-    <button
-      class="button is-link"
-      on:click={() =>
-        (hideProfileUpdateContainer = !hideProfileUpdateContainer)}
-      >Toggle update profile</button
-    >
     <div class:show-profile-container={hideProfileUpdateContainer}>
       <h1>Update your profile</h1>
 
