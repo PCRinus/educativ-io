@@ -8,8 +8,10 @@
   import Dashboard from "./pages/Dashboard.svelte";
   import Signup from "./pages/Signup.svelte";
   import Login from "./pages/Login.svelte";
+  import Settings from "./pages/Settings.svelte";
   import Room from "./pages/Room.svelte";
   import Categories from "./pages/Categories.svelte";
+  import Profile from "./pages/Profile.svelte";
   import OwnProfile from "./pages/OwnProfile.svelte";
   import AddLesson from "./pages/Lesson/AddLesson.svelte";
   import AddLessonMarkdown from "./pages/Lesson/AddLessonMarkdown.svelte";
@@ -22,7 +24,9 @@
     "/dashboard": Dashboard,
     "/signup": Signup,
     "/login": Login,
+    "/settings": Settings,
     "/profile/you": OwnProfile,
+    "/profile/:userName": Profile,
     "/room/:uuidKey": Room,
     "/categories": Categories,
     "/new-lesson": AddLesson,

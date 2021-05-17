@@ -3,17 +3,20 @@
     <p>
       <strong>Educativ.io</strong> by Mircea Casapu. Bachelor's project.
     </p>
-    <p>Source code available on
-      <a target="_blank" href="https://github.com/PCRinus/educativ-io"><i class="fab fa-github"></i></a>
+    <p>
+      Source code available on
+      <a target="_blank" href="https://github.com/PCRinus/educativ-io"
+        ><i class="fab fa-github" /></a
+      >
     </p>
   </div>
 </footer>
 
 <style>
-  .custom-footer{
+  .custom-footer {
     padding-bottom: 3rem !important;
   }
-  .fab{
+  .fab {
     font-size: 2rem;
   }
 </style>
