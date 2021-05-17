@@ -9,6 +9,10 @@
     $user = null;
     push("/");
   }
+
+  function redirectToProfile() {
+    push("/profile/" + $user.username);
+  }
 </script>
 
 <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -36,7 +40,7 @@
     <div class="navbar-start">
       {#if $user}
         <a href="#/dashboard" class="navbar-item"> Dashboard </a>
-        <a href="#/profile/you" class="navbar-item"> Profile </a>
+        <a on:click={redirectToProfile} class="navbar-item"> Profile </a>
       {/if}
     </div>
 

@@ -1,7 +1,7 @@
 <script>
   import axios from "axios";
   import { onMount } from "svelte";
-  import { userProfile, lessonsData } from "../stores";
+  import { userProfile, userName, lessonsData, user } from "../stores";
   import LessonList from "../components/LessonList.svelte";
   import PageTransitions from "../components/PageTransitions.svelte";
 
@@ -12,7 +12,7 @@
   let svgPath = "images/male-user.svg";
 
   onMount(async () => {
-    const { data } = await axios.get("/api/profile");
+    const { data } = await axios.get("/api/profile/" + $userName);
     $userProfile = data;
   });
 
@@ -40,12 +40,14 @@
             <p>First name: {profile.firstName}</p>
             <p>Last name: {profile.lastName}</p>
             <p>Age: {profile.age}</p>
-            <button
-            class="button is-link"
-            on:click={() =>
-              (hideProfileUpdateContainer = !hideProfileUpdateContainer)}
-            >Toggle update profile</button
-          >
+            {#if $user.username === $userName}
+              <button
+                class="button is-link"
+                on:click={() =>
+                  (hideProfileUpdateContainer = !hideProfileUpdateContainer)}
+                >Toggle update profile</button
+              >
+            {/if}
           </div>
           <div class="column">
             <h1>Added lessons</h1>
