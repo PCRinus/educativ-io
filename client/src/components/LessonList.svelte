@@ -1,10 +1,15 @@
 <script>
   import { push } from "svelte-spa-router";
-  import { selectedLessonSlug } from "../stores";
+  import { selectedLessonSlug, userName } from "../stores";
 
   function redirectToLesson(slug) {
     $selectedLessonSlug = slug;
     push("/lessons/" + $selectedLessonSlug);
+  }
+
+  function redirectToUserProfile(author) {
+    $userName = author;
+    push("/profile/" + $userName);
   }
 
   export let lessonList;
@@ -18,7 +23,7 @@
       <div class="card-content">
         <p class="title">{lesson.title}</p>
         <p class="subtitle">{lesson.description}</p>
-        <p class="subtitle">Author: {lesson.author}</p>
+        <p class="subtitle" on:click={() => redirectToUserProfile(lesson.author)}>Author: {lesson.author}</p>
         <p class="subtitle">{lesson.createdAt}</p>
 
         <button
