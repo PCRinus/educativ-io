@@ -2,6 +2,7 @@
   import axios from "axios";
   import { onMount } from "svelte";
   import { userProfile, lessonsData, user } from "../../stores";
+  import ProfileData from "../../components/ProfileData.svelte";
   import LessonList from "../../components/LessonList.svelte";
   import PageTransitions from "../../components/PageTransitions.svelte";
 
@@ -9,11 +10,18 @@
   let firstName = "";
   let lastName = "";
   let age = 0;
-  let svgPath = "images/male-user.svg";
 
   onMount(async () => {
-    const { data } = await axios.get("/api/profile/" + $user.username);
-    $userProfile = data;
+    await axios
+      .all([
+        axios.get("/api/profile/" + $user.username),
+        axios.get("/api/lesson/fromUser/" + $user.username),
+      ])
+      .then(
+        axios.spread((...responses) => {
+          ($userProfile = responses[0].data), ($lessonsData = responses[1].data);
+        })
+      );
   });
 
   async function setProfileChanges() {
@@ -30,30 +38,15 @@
 
 <PageTransitions>
   <div class="container container-custom">
-    {#if $userProfile.length === 0}
-      <p>No profile has been set up yet, add your profile!</p>
-    {:else}
-      <div class="columns">
-        {#each $userProfile as profile}
-          <div class="column is-one-third">
-            <img src={svgPath} alt="User profile" />
-            <p>First name: {profile.firstName}</p>
-            <p>Last name: {profile.lastName}</p>
-            <p>Age: {profile.age}</p>
-            <button
-              class="button is-link"
-              on:click={() =>
-                (hideProfileUpdateContainer = !hideProfileUpdateContainer)}
-              >Toggle update profile</button
-            >
-          </div>
-          <div class="column">
-            <h1>Added lessons</h1>
-            <LessonList lessonList={$lessonsData} />
-          </div>
-        {/each}
+    <div class="columns">
+      <div class="column is-one-third">
+        <ProfileData profileData={$userProfile} />
       </div>
-    {/if}
+      <div class="column">
+        <h1>Added lessons</h1>
+        <LessonList lessonList={$lessonsData} />
+      </div>
+    </div>
     <div class:show-profile-container={hideProfileUpdateContainer}>
       <h1>Update your profile</h1>
 
@@ -88,10 +81,6 @@
 </PageTransitions>
 
 <style>
-  img {
-    height: 10rem;
-    width: 10rem;
-  }
   .show-profile-container {
     display: none;
   }
