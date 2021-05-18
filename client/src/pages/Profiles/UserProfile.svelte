@@ -19,7 +19,8 @@
       ])
       .then(
         axios.spread((...responses) => {
-          ($userProfile = responses[0].data), ($lessonsData = responses[1].data);
+          ($userProfile = responses[0].data),
+            ($lessonsData = responses[1].data.slice(0, 2));
         })
       );
   });

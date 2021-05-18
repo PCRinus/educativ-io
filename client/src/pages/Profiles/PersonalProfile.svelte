@@ -19,7 +19,8 @@
       ])
       .then(
         axios.spread((...responses) => {
-          ($userProfile = responses[0].data), ($lessonsData = responses[1].data);
+          ($userProfile = responses[0].data),
+            ($lessonsData = responses[1].data);
         })
       );
   });
@@ -41,6 +42,12 @@
     <div class="columns">
       <div class="column is-one-third">
         <ProfileData profileData={$userProfile} />
+        <button
+          class="button is-link"
+          on:click={() =>
+            (hideProfileUpdateContainer = !hideProfileUpdateContainer)}
+          >Toggle update profile</button
+        >
       </div>
       <div class="column">
         <h1>Added lessons</h1>
