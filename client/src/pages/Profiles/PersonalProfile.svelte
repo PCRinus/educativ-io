@@ -1,9 +1,9 @@
 <script>
   import axios from "axios";
   import { onMount } from "svelte";
-  import { userProfile, lessonsData, user } from "../stores";
-  import LessonList from "../components/LessonList.svelte";
-  import PageTransitions from "../components/PageTransitions.svelte";
+  import { userProfile, lessonsData, user } from "../../stores";
+  import LessonList from "../../components/LessonList.svelte";
+  import PageTransitions from "../../components/PageTransitions.svelte";
 
   let hideProfileUpdateContainer = true;
   let firstName = "";
