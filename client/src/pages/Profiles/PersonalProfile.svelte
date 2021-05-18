@@ -1,5 +1,6 @@
 <script>
   import axios from "axios";
+  import { link } from "svelte-spa-router";
   import { onMount } from "svelte";
   import { userProfile, lessonsData, user } from "../../stores";
   import ProfileData from "../../components/ProfileData.svelte";
@@ -42,12 +43,7 @@
     <div class="columns">
       <div class="column is-one-third">
         <ProfileData profileData={$userProfile} />
-        <button
-          class="button is-link"
-          on:click={() =>
-            (hideProfileUpdateContainer = !hideProfileUpdateContainer)}
-          >Toggle update profile</button
-        >
+        <a href="/edit-profile" class="button is-link" use:link>Edit profile</a>
       </div>
       <div class="column">
         <h1>Added lessons</h1>

@@ -18,6 +18,7 @@
   import ListAllLessons from "./pages/Lesson/ListAllLessons.svelte";
   import ListAllLessonsInsideCategory from "./pages/Lesson/ListAllLessonsInsideCategory.svelte";
   import ListSpecificLesson from "./pages/Lesson/ListSpecificLesson.svelte";
+  import EditProfile from "./pages/Profiles/EditProfile.svelte";
 
   const routes = {
     "/": Home,
@@ -26,6 +27,7 @@
     "/login": Login,
     "/settings": Settings,
     "/you": PersonalProfile,
+    "/edit-profile": EditProfile,
     "/profile/:userName": UserProfile,
     "/room/:uuidKey": Room,
     "/categories": Categories,
