@@ -1,6 +1,6 @@
 <script>
   import axios from "axios";
-  import { push } from "svelte-spa-router";
+  import { push, link } from "svelte-spa-router";
   import { user } from "../stores";
   let isActive = false;
 
@@ -9,6 +9,7 @@
     $user = null;
     push("/");
   }
+
 </script>
 
 <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -35,8 +36,8 @@
   <div class="navbar-menu" class:is-active={isActive}>
     <div class="navbar-start">
       {#if $user}
-        <a href="#/dashboard" class="navbar-item"> Dashboard </a>
-        <a href="#/profile/you" class="navbar-item"> Profile </a>
+        <a href="/dashboard" use:link class="navbar-item"> Dashboard </a>
+        <a href="/you" use:link class="navbar-item"> Profile </a>
       {/if}
     </div>
 
@@ -49,10 +50,10 @@
           {#if $user}
             <button class="button is-light" on:click={logout}>Logout</button>
           {:else}
-            <a href="#/signup" class="button is-primary">
+            <a href="/signup" use:link class="button is-primary">
               <strong>Sign up</strong>
             </a>
-            <a href="#/login" class="button is-light"> Log in </a>
+            <a href="/login" use:link class="button is-light"> Log in </a>
           {/if}
         </div>
       </div>

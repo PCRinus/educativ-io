@@ -11,13 +11,14 @@
   import Settings from "./pages/Settings.svelte";
   import Room from "./pages/Room.svelte";
   import Categories from "./pages/Categories.svelte";
-  import Profile from "./pages/Profile.svelte";
-  import OwnProfile from "./pages/OwnProfile.svelte";
+  import UserProfile from "./pages/Profiles/UserProfile.svelte";
+  import PersonalProfile from "./pages/Profiles/PersonalProfile.svelte";
   import AddLesson from "./pages/Lesson/AddLesson.svelte";
   import AddLessonMarkdown from "./pages/Lesson/AddLessonMarkdown.svelte";
   import ListAllLessons from "./pages/Lesson/ListAllLessons.svelte";
   import ListAllLessonsInsideCategory from "./pages/Lesson/ListAllLessonsInsideCategory.svelte";
   import ListSpecificLesson from "./pages/Lesson/ListSpecificLesson.svelte";
+  import EditProfile from "./pages/Profiles/EditProfile.svelte";
 
   const routes = {
     "/": Home,
@@ -25,8 +26,9 @@
     "/signup": Signup,
     "/login": Login,
     "/settings": Settings,
-    "/profile/you": OwnProfile,
-    "/profile/:userName": Profile,
+    "/you": PersonalProfile,
+    "/edit-profile": EditProfile,
+    "/profile/:userName": UserProfile,
     "/room/:uuidKey": Room,
     "/categories": Categories,
     "/new-lesson": AddLesson,

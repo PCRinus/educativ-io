@@ -23,7 +23,12 @@
       <div class="card-content">
         <p class="title">{lesson.title}</p>
         <p class="subtitle">{lesson.description}</p>
-        <p class="subtitle" on:click={() => redirectToUserProfile(lesson.author)}>Author: {lesson.author}</p>
+        <p class="subtitle">
+          <!-- svelte-ignore a11y-missing-attribute -->
+          Author: <a on:click={() => redirectToUserProfile(lesson.author)}
+            >{lesson.author}</a
+          >
+        </p>
         <p class="subtitle">{lesson.createdAt}</p>
 
         <button
