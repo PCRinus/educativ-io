@@ -1,0 +1,26 @@
+/* Add CSS styles here! */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 0 auto;
+}
+
+.custom-footer {
+  flex-shrink: 0;
+}
+
+.container-custom {
+  max-width: 75ch !important;
+}
