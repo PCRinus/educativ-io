@@ -19,7 +19,9 @@
     <h1>Browse available lessons:</h1>
     <div class="columns">
       <div class="column">
-        <a href="/categories" class="button is-link" use:link>Browse by category</a>
+        <a href="/categories" class="button is-link" use:link
+          >Browse by category</a
+        >
       </div>
 
       <div class="column">
@@ -29,10 +31,17 @@
       </div>
 
       <div class="column">
-        <a href="/new-lesson" class="button is-link" use:link>Add a new lesson</a>
+        <a href="/new-lesson" class="button is-link" use:link
+          >Add a new lesson</a
+        >
       </div>
     </div>
     <h1>Connect to a meeting room:</h1>
+    {#if $uuidKey === ""}
+      <h1>Please generate a key or join a room</h1>
+    {:else}
+      <h1>{$uuidKey}</h1>
+    {/if}
     <div class="columns">
       <div class="column">
         <button class="button is-link" on:click={generateUUID}>
@@ -49,13 +58,25 @@
           Redirect to meeting room
         </button>
       </div>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <form action="">
+          <div class="field">
+            <input type="text" class="input" bind:value={$uuidKey} required />
+          </div>
+        </form>
+      </div>
 
       <div class="column">
-        {#if $uuidKey === ""}
-          <p>Please generate a key</p>
-        {:else}
-          <p>{$uuidKey}</p>
-        {/if}
+        <button
+          class="button is-link"
+          on:click={redirectToRoom}
+          disabled={!$uuidRedirectButton}
+        >
+          Join meeting room
+        </button>
       </div>
     </div>
   </div>

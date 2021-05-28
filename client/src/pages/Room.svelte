@@ -18,7 +18,7 @@
   </div> -->
 
     <iframe
-      src="https://tokbox.com/embed/embed/ot-embed.js?embedId=dc381aeb-37e5-43c2-ba95-495863cf8fad&room=DEFAULT_ROOM&iframe=true"
+      src="https://tokbox.com/embed/embed/ot-embed.js?embedId=dc381aeb-37e5-43c2-ba95-495863cf8fad&room={$uuidKey}&iframe=true"
       width="800px"
       height="640px"
       scrolling="auto"
