@@ -9,7 +9,8 @@
   import Signup from "./pages/Signup.svelte";
   import Login from "./pages/Login.svelte";
   import Settings from "./pages/Settings.svelte";
-  import Room from "./pages/Room.svelte";
+  import Room from "./pages/MeetingRoom/Room.svelte";
+  import JoinMeetingRoom from "./pages/MeetingRoom/JoinMeetingRoom.svelte";
   import Categories from "./pages/Categories/Categories.svelte";
   import AddCategory from "./pages/Categories/AddCategory.svelte";
   import UserProfile from "./pages/Profiles/UserProfile.svelte";
@@ -32,6 +33,7 @@
     "/favourites": ListFavouriteLessons,
     "/edit-profile": EditProfile,
     "/profile/:userName": UserProfile,
+    "/join-room": JoinMeetingRoom,
     "/room/:uuidKey": Room,
     "/categories": Categories,
     "/new-category": AddCategory,

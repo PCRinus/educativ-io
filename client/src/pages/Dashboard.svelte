@@ -2,7 +2,10 @@
   import { push, link } from "svelte-spa-router";
   import { uuidKey, uuidRedirectButton } from "../stores";
   import { v4 as uuidv4 } from "uuid";
+  import { onDestroy } from "svelte";
   import PageTransitions from "../components/PageTransitions.svelte";
+
+  let tooltip = "Copy room code";
 
   function generateUUID() {
     $uuidKey = uuidv4();
@@ -12,6 +15,21 @@
   function redirectToRoom() {
     push("/room/" + $uuidKey);
   }
+
+  function joinRoom() {
+    push("/join-room");
+  }
+
+  function copyMeetingRoomCode() {
+    document.getElementById("roomID").select();
+    let asdf = document.execCommand("copy");
+    console.log(asdf);
+  }
+
+  onDestroy(() => {
+    $uuidKey = "";
+    $uuidRedirectButton = false;
+  });
 </script>
 
 <PageTransitions>
@@ -38,11 +56,24 @@
     </div>
     <h1>Connect to a meeting room:</h1>
     {#if $uuidKey === ""}
-      <h1>Please generate a key or join a room</h1>
+      <p>Please generate a key or join a room</p>
     {:else}
-      <h1>{$uuidKey}</h1>
+      <p id="roomID">
+        {$uuidKey}
+        <i
+          class="far fa-copy"
+          on:click={copyMeetingRoomCode}
+          data-tooltip={tooltip}
+        />
+      </p>
     {/if}
     <div class="columns">
+      <div class="column">
+        <button class="button is-link" on:click={joinRoom}>
+          Join an existing room
+        </button>
+      </div>
+
       <div class="column">
         <button class="button is-link" on:click={generateUUID}>
           Generate Room
@@ -59,25 +90,14 @@
         </button>
       </div>
     </div>
-
-    <div class="columns">
-      <div class="column">
-        <form action="">
-          <div class="field">
-            <input type="text" class="input" bind:value={$uuidKey} required />
-          </div>
-        </form>
-      </div>
-
-      <div class="column">
-        <button
-          class="button is-link"
-          on:click={redirectToRoom}
-          disabled={!$uuidRedirectButton}
-        >
-          Join meeting room
-        </button>
-      </div>
-    </div>
   </div>
 </PageTransitions>
+
+<style>
+  .far {
+    color: #3273dc;
+  }
+  .far:hover {
+    color: #363636;
+  }
+</style>
