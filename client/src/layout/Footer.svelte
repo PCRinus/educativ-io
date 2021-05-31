@@ -18,5 +18,6 @@
   }
   .fab {
     font-size: 2rem;
+    transition: color ease .3s;
   }
 </style>

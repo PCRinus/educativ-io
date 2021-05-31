@@ -27,7 +27,7 @@
       <p class="subtitle">
         <!-- svelte-ignore missing-declaration -->
         <!-- svelte-ignore a11y-missing-attribute -->
-        Author: <a on:click={() => redirectToUserProfile(categoryData.author)}
+        Author: <a class="author-link" on:click={() => redirectToUserProfile(categoryData.author)}
           >{categoryData.author}</a
         >
       </p>
@@ -40,3 +40,9 @@
     </div>
   </div>
 {/each}
+
+<style>
+.author-link{
+  transition: color ease .3s;
+}
+</style>
