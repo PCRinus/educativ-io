@@ -21,15 +21,16 @@
   }
 
   function copyMeetingRoomCode() {
-    document.getElementById("roomID").select();
-    let asdf = document.execCommand("copy");
-    console.log(asdf);
+    let copyKeyData = document.getElementById("roomID");
+    copyKeyData.focus();
+    copyKeyData.select();
+    document.execCommand("copy");
   }
 
-  onDestroy(() => {
-    $uuidKey = "";
-    $uuidRedirectButton = false;
-  });
+  // onDestroy(() => {
+  //   $uuidKey = "";
+  //   $uuidRedirectButton = false;
+  // });
 </script>
 
 <PageTransitions>
@@ -58,14 +59,23 @@
     {#if $uuidKey === ""}
       <p>Please generate a key or join a room</p>
     {:else}
-      <p id="roomID">
+      <!-- <p id="roomID">
         {$uuidKey}
         <i
           class="far fa-copy"
           on:click={copyMeetingRoomCode}
           data-tooltip={tooltip}
         />
-      </p>
+      </p> -->
+
+      <input id="roomID" type="text" bind:value={$uuidKey} />
+      <button class="button" on:click={copyMeetingRoomCode}>
+        Copy room key 
+        <i
+          class="far fa-copy"
+          data-tooltip={tooltip}
+        /></button
+      >
     {/if}
     <div class="columns">
       <div class="column">
@@ -96,8 +106,5 @@
 <style>
   .far {
     color: #3273dc;
-  }
-  .far:hover {
-    color: #363636;
   }
 </style>
