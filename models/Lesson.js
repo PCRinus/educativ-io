@@ -1,6 +1,5 @@
 const { Schema, model } = require("mongoose");
 const { default: slugify } = require("slugify");
-const sulify = require("slugify");
 
 const LessonSchema = new Schema({
   title: {
