@@ -5,6 +5,7 @@
     currentLessonDescription,
     currentLessonCategory,
   } from "../../stores";
+  import { toast } from "@zerodevx/svelte-toast";
   import { onDestroy, onMount } from "svelte";
   import marked from "marked";
   import { push } from "svelte-spa-router";
@@ -28,14 +29,24 @@
   }
 
   function redirectToDashboard() {
+    toast.push("Lesson added!", {
+      theme: {
+    '--toastBackground': '#48BB78',
+    '--toastProgressBackground': '#2F855A'
+  }
+    });
     push("/dashboard");
   }
 
   onMount(() => {
-    if($currentLessonTitle === "" || $currentLessonDescription === "" || typeof $currentLessonCategory === undefined) {
+    if (
+      $currentLessonTitle === "" ||
+      $currentLessonDescription === "" ||
+      typeof $currentLessonCategory === undefined
+    ) {
       push("/new-lesson");
     }
-  })
+  });
 
   onDestroy(() => {
     $currentLessonTitle = "";

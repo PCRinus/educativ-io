@@ -2,6 +2,7 @@
   import axios from "axios";
   import { push } from "svelte-spa-router";
   import { userProfile } from "../../stores";
+  import { toast } from "@zerodevx/svelte-toast";
   import PageTransitions from "../../components/PageTransitions.svelte";
 
   let firstName = "";
@@ -15,6 +16,12 @@
       age: age,
     };
     await axios.post("/api/profile", profile);
+    toast.push("Profile changed!", {
+      theme: {
+        "--toastBackground": "#48BB78",
+        "--toastProgressBackground": "#2F855A",
+      },
+    });
     push("/you");
   }
 </script>

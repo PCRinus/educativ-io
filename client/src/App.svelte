@@ -1,4 +1,5 @@
 <script>
+  import { SvelteToast } from "@zerodevx/svelte-toast";
   import { onMount } from "svelte";
   import { user } from "./stores";
   import Router, { push } from "svelte-spa-router";
@@ -55,5 +56,14 @@
 <Navbar />
 <div class="content">
   <Router {routes} />
+  <SvelteToast options={{ reversed: true, duration: 2000, intro: { y: 192 } }} />
 </div>
 <Footer />
+
+<style>
+  :root {
+    --toastContainerTop: auto;
+    --toastContainerBottom: 4rem;
+    --toastContainerLeft: auto;
+  }
+</style>
