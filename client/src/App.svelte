@@ -56,7 +56,7 @@
 <Navbar />
 <div class="content">
   <Router {routes} />
-  <SvelteToast options={{ reversed: true, duration: 2000, intro: { y: 192 } }} />
+  <SvelteToast options={{ reversed: true, duration: 3000, intro: { y: 192 } }} />
 </div>
 <Footer />
 

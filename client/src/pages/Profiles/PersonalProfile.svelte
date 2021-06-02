@@ -8,6 +8,9 @@
   import CategoryList from "../../components/CatgoryList.svelte";
   import PageTransitions from "../../components/PageTransitions.svelte";
 
+  let allLessons = false;
+  let allCategories = false;
+
   onMount(async () => {
     await axios
       .all([
@@ -23,6 +26,14 @@
         })
       );
   });
+
+  function getAllLessons() {
+    allLessons = !allLessons;
+  }
+
+  function getAllCategories() {
+    allCategories = !allCategories;
+  }
 </script>
 
 <PageTransitions>
@@ -33,13 +44,39 @@
         <a href="/edit-profile" class="button is-link" use:link>Edit profile</a>
       </div>
       <div class="column">
-        <h1>Added lessons</h1>
-        <LessonList lessonList={$lessonsData} />
+        <div class="category-list-header">
+          <h1>Added lessons</h1>
+          <button class="button is-link" on:click={getAllLessons}
+            >Toggle all lessons</button
+          >
+        </div>
+        {#if allLessons}
+          <LessonList lessonList={$lessonsData} />
+        {:else}
+          <LessonList lessonList={$lessonsData.slice(0, 2)} />
+        {/if}
       </div>
       <div class="column">
-        <h1>Latest added categories</h1>
-        <CategoryList categoryList={$categoriesData} />
+        <div class="category-list-header">
+          <h1>Added categories</h1>
+          <button class="button is-link" on:click={getAllCategories}
+            >Toggle all categories</button
+          >
+        </div>
+        {#if allCategories}
+          <CategoryList categoryList={$categoriesData} />
+        {:else}
+          <CategoryList categoryList={$categoriesData.slice(0, 2)} />
+        {/if}
       </div>
     </div>
   </div>
 </PageTransitions>
+
+<style>
+  .category-list-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+</style>
