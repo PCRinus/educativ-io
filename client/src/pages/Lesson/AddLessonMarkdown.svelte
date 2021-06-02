@@ -8,6 +8,7 @@
   import { onDestroy } from "svelte";
   import marked from "marked";
   import { push } from "svelte-spa-router";
+  import MarkdownExplanation from "./MarkdownExplanation.svelte";
   import PageTransitions from "../../components/PageTransitions.svelte";
 
   let source = `
@@ -73,31 +74,50 @@
         <h1>Category: {$currentLessonCategory.name}</h1>
       </div>
     </div>
-    <form on:submit|preventDefault={submitLesson}>
-      <div class="markdown-editor">
-        <div class="left-panel">
-          <textarea bind:value={source} class="source" />
-        </div>
+    <div class="columns">
+      <div class="column is-9">
+        <form on:submit|preventDefault={submitLesson}>
+          <div class="markdown-editor">
+            <div class="left-panel">
+              <textarea bind:value={source} class="source" />
+            </div>
 
-        <div class="right-panel">
-          <div class="output">{@html markdown}</div>
-        </div>
+            <div class="right-panel">
+              <div class="output">{@html markdown}</div>
+            </div>
+          </div>
+
+          <div class="control">
+            <input
+              type="submit"
+              class="button is-link submit-markdown"
+              value="Submit markdown"
+            />
+          </div>
+        </form>
       </div>
 
-      <div class="control">
-        <input
-          type="submit"
-          class="button is-link submit-markdown"
-          value="Submit markdown"
-        />
+      <div class="column">
+        <p>
+          Use <a
+            href="https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet"
+            target="_blank">Markdown</a
+          > to write and format posts.
+        </p>
+        <details open>
+          <summary>Commonly used syntax</summary>
+          <MarkdownExplanation />
+        </details>
       </div>
-    </form>
+    </div>
   </div>
 </PageTransitions>
 
 <style>
+  textarea{
+    resize: none;
+  }
   .markdown-editor {
-    width: 100%;
     display: flex;
     align-items: flex-start;
     justify-content: space-evenly;
