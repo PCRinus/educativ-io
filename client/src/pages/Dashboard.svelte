@@ -3,13 +3,17 @@
   import { uuidKey, uuidRedirectButton } from "../stores";
   import { v4 as uuidv4 } from "uuid";
   import { onDestroy } from "svelte";
+  import ClipboardJS from "clipboard";
   import PageTransitions from "../components/PageTransitions.svelte";
 
-  let tooltip = "Copy room code";
+  new ClipboardJS("#copy-roomID");
+
+  let isKeyCopied;
 
   function generateUUID() {
     $uuidKey = uuidv4();
     $uuidRedirectButton = true;
+    isKeyCopied = false;
   }
 
   function redirectToRoom() {
@@ -20,17 +24,14 @@
     push("/join-room");
   }
 
-  function copyMeetingRoomCode() {
-    let copyKeyData = document.getElementById("roomID");
-    copyKeyData.focus();
-    copyKeyData.select();
-    document.execCommand("copy");
+  function copyKey() {
+    isKeyCopied = true;
   }
 
-  // onDestroy(() => {
-  //   $uuidKey = "";
-  //   $uuidRedirectButton = false;
-  // });
+  onDestroy(() => {
+    $uuidKey = "";
+    $uuidRedirectButton = false;
+  });
 </script>
 
 <PageTransitions>
@@ -59,23 +60,21 @@
     {#if $uuidKey === ""}
       <p>Please generate a key or join a room</p>
     {:else}
-      <!-- <p id="roomID">
-        {$uuidKey}
-        <i
-          class="far fa-copy"
-          on:click={copyMeetingRoomCode}
-          data-tooltip={tooltip}
-        />
-      </p> -->
-
-      <input id="roomID" type="text" bind:value={$uuidKey} />
-      <button class="button" on:click={copyMeetingRoomCode}>
-        Copy room key 
-        <i
-          class="far fa-copy"
-          data-tooltip={tooltip}
-        /></button
+      <div
+        class="room-id-container has-addons"
+        id="copy-roomID"
+        data-clipboard-target="#roomID"
+        on:click={copyKey}
       >
+        <i class="far fa-copy" />
+        <p class="room-id" id="roomID" type="text">{$uuidKey}</p>
+      </div>
+      <!-- <button id="copy-roomID" class="" data-clipboard-target="#roomID">
+        Copy room key
+      </button> -->
+    {/if}
+    {#if isKeyCopied}
+      <h4>Key was copied!</h4>
     {/if}
     <div class="columns">
       <div class="column">
@@ -104,7 +103,23 @@
 </PageTransitions>
 
 <style>
-  .far {
-    color: #3273dc;
+  .room-id-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid;
+    border-color: #dbdbdb;
+    border-radius: 4px;
+    padding: 0rem 2ch;
+    margin-bottom: 1rem;
+    height: 2.5em;
+  }
+
+  .room-id {
+    padding: 0rem 1ch;
+  }
+  .room-id-container:hover {
+    cursor: pointer;
+    background-color: #6feb98a8;
+    transition: color ease 0.3s;
   }
 </style>
