@@ -12,30 +12,8 @@
   import PageTransitions from "../../components/PageTransitions.svelte";
 
   let source = `
-# H1 heading
-
-## H2 heading
-
-### H3 heading
-
---------
-
-**bold text**
-
-*italicized text*
-
---------
-
-1. First item
-2. Second item
-3. Third item
-
-- First item
-- Second item
-- Third item
-
-[Svelte](https://svelte.dev/)
-`;
+  # This is an example
+  ### Write your lesson here ...`;
   $: markdown = marked(source);
 
   function submitLesson() {
@@ -79,7 +57,11 @@
         <form on:submit|preventDefault={submitLesson}>
           <div class="markdown-editor">
             <div class="left-panel">
-              <textarea bind:value={source} class="source" />
+              <textarea
+                bind:value={source}
+                class="source"
+                placeholder="Write your lesson here..."
+              />
             </div>
 
             <div class="right-panel">
@@ -98,6 +80,7 @@
       </div>
 
       <div class="column">
+        <h4>Editor basics</h4>
         <p>
           Use <a
             href="https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet"
@@ -114,7 +97,7 @@
 </PageTransitions>
 
 <style>
-  textarea{
+  textarea {
     resize: none;
   }
   .markdown-editor {
@@ -126,6 +109,7 @@
   .right-panel {
     width: 50%;
     border: solid 1px black;
+    border-radius: 5px;
     height: 85vh;
     background: #ffffff;
   }
