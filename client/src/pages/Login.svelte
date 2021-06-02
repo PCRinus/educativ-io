@@ -40,11 +40,12 @@
       {/if}
       <form on:submit|preventDefault={login}>
         <div class="field">
-          <label for="" class="label">Username</label>
+          <label for="username" class="label">Username</label>
           <div class="control">
             <input
               type="text"
               class="input"
+              name="username"
               bind:value={username}
               class:is-danger={errorMessage}
               required
@@ -53,11 +54,12 @@
         </div>
 
         <div class="field">
-          <label for="" class="label">Password</label>
+          <label for="password" class="label">Password</label>
           <div class="control">
             <input
               type="password"
               class="input"
+              name="password"
               bind:value={password}
               class:is-danger={errorMessage}
               required
