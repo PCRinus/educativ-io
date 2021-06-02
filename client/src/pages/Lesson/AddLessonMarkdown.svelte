@@ -31,9 +31,9 @@
   function redirectToDashboard() {
     toast.push("Lesson added!", {
       theme: {
-    '--toastBackground': '#48BB78',
-    '--toastProgressBackground': '#2F855A'
-  }
+        "--toastBackground": "#48BB78",
+        "--toastProgressBackground": "#2F855A",
+      },
     });
     push("/dashboard");
   }

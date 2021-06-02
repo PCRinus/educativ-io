@@ -4,11 +4,10 @@
   import { v4 as uuidv4 } from "uuid";
   import { onDestroy } from "svelte";
   import ClipboardJS from "clipboard";
+  import { toast } from "@zerodevx/svelte-toast";
   import PageTransitions from "../components/PageTransitions.svelte";
 
   new ClipboardJS("#copy-roomID");
-
-  let isKeyCopied;
 
   function generateUUID() {
     $uuidKey = uuidv4();
@@ -25,7 +24,12 @@
   }
 
   function copyKey() {
-    isKeyCopied = true;
+    toast.push("Copied to clipboard!", {
+      theme: {
+        "--toastBackground": "#48BB78",
+        "--toastProgressBackground": "#2F855A",
+      },
+    });
   }
 
   onDestroy(() => {
@@ -69,12 +73,6 @@
         <i class="far fa-copy" />
         <p class="room-id" id="roomID" type="text">{$uuidKey}</p>
       </div>
-      <!-- <button id="copy-roomID" class="" data-clipboard-target="#roomID">
-        Copy room key
-      </button> -->
-    {/if}
-    {#if isKeyCopied}
-      <h4>Key was copied!</h4>
     {/if}
     <div class="columns">
       <div class="column">
