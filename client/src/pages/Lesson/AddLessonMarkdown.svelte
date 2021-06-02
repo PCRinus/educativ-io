@@ -5,7 +5,7 @@
     currentLessonDescription,
     currentLessonCategory,
   } from "../../stores";
-  import { onDestroy } from "svelte";
+  import { onDestroy, onMount } from "svelte";
   import marked from "marked";
   import { push } from "svelte-spa-router";
   import MarkdownExplanation from "./MarkdownExplanation.svelte";
@@ -31,6 +31,12 @@
     push("/dashboard");
   }
 
+  onMount(() => {
+    if($currentLessonTitle === "" || $currentLessonDescription === "" || typeof $currentLessonCategory === undefined) {
+      push("/new-lesson");
+    }
+  })
+
   onDestroy(() => {
     $currentLessonTitle = "";
     $currentLessonDescription = "";
@@ -40,7 +46,6 @@
 
 <PageTransitions>
   <div class="container">
-    <h1>Markdown Editor</h1>
     <div class="columns">
       <div class="column">
         <h1>Title: {$currentLessonTitle}</h1>
