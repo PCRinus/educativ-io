@@ -5,11 +5,13 @@
   import { onDestroy } from "svelte";
   import validator from "validator";
 
+  let errorMessage = null;
+
   function joinRoom($uuidKey) {
     if (validator.isUUID($uuidKey, 4)) {
       push("/room/" + $uuidKey);
     } else {
-      console.log("not valid");
+      errorMessage = "Invalid meeting room key!";
     }
   }
 
@@ -30,9 +32,13 @@
           class="input"
           name="room-key"
           bind:value={$uuidKey}
-          required
           placeholder="Meeting room key"
+          class:is-danger={errorMessage}
+          required
         />
+        {#if errorMessage}
+        <p class="help is-danger">{errorMessage}</p>
+      {/if}
       </div>
 
       <div class="control">
