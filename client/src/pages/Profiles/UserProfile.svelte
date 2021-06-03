@@ -59,9 +59,11 @@
         <div class="column">
           <div class="category-list-header">
             <h1>Added lessons</h1>
-            <button class="button is-link" on:click={getAllLessons}
-              >Toggle all lessons</button
-            >
+            {#if $lessonsData.length > 2}
+              <button class="button is-link" on:click={getAllLessons}
+                >Toggle all lessons</button
+              >
+            {/if}
           </div>
           {#if allLessons}
             <LessonList lessonList={$lessonsData} />
@@ -72,9 +74,11 @@
         <div class="column">
           <div class="category-list-header">
             <h1>Added categories</h1>
-            <button class="button is-link" on:click={getAllCategories}
-              >Toggle all categories</button
-            >
+            {#if $categoriesData.length > 2}
+              <button class="button is-link" on:click={getAllCategories}
+                >Toggle all categories</button
+              >
+            {/if}
           </div>
           {#if allCategories}
             <CategoryList categoryList={$categoriesData} />
