@@ -20,5 +20,14 @@
     <h4>{$currentLessonData.description}</h4>
     <h4>{$currentLessonData.createdAt}</h4>
     <p>{@html markdown}</p>
+    <button class="button is-link"
+      ><i class="fas fa-download" /> Download lesson PDF</button
+    >
   </div>
 </PageTransitions>
+
+<style>
+  .fas {
+    margin-right: 1ch;
+  }
+</style>
