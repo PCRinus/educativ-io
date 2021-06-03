@@ -49,7 +49,7 @@
         {/if}
         <div class="buttons">
           {#if $user}
-            <button class="button is-light" on:click={logout}>Logout</button>
+            <button class="button is-danger is-light" on:click={logout}>Logout</button>
           {:else}
             <a href="/signup" use:link class="button is-primary">
               <strong>Sign up</strong>
