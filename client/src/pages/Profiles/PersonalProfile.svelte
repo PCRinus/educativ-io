@@ -10,21 +10,28 @@
 
   let allLessons = false;
   let allCategories = false;
+  let errorMessage;
 
   onMount(async () => {
-    await axios
-      .all([
-        axios.get("/api/profile/" + $user.username),
-        axios.get("/api/lesson/fromUser/" + $user.username),
-        axios.get("/api/categories/fromUser/" + $user.username),
-      ])
-      .then(
-        axios.spread((...responses) => {
-          ($userProfile = responses[0].data),
-            ($lessonsData = responses[1].data),
-            ($categoriesData = responses[2].data);
-        })
-      );
+    try {
+      await axios
+        .all([
+          axios.get("/api/profile/" + $user.username),
+          axios.get("/api/lesson/fromUser/" + $user.username),
+          axios.get("/api/categories/fromUser/" + $user.username),
+        ])
+        .then(
+          axios.spread((...responses) => {
+            ($userProfile = responses[0].data),
+              ($lessonsData = responses[1].data),
+              ($categoriesData = responses[2].data);
+          })
+        );
+    } catch (error) {
+      if (error.response.data.message) {
+        errorMessage = error.response.data.message;
+      }
+    }
   });
 
   function getAllLessons() {
@@ -38,38 +45,47 @@
 
 <PageTransitions>
   <div class="container">
-    <div class="columns">
-      <div class="column is-one-fifth">
-        <ProfileData profileData={$userProfile} />
-        <a href="/edit-profile" class="button is-link" use:link>Edit profile</a>
-      </div>
-      <div class="column">
-        <div class="category-list-header">
-          <h1>Added lessons</h1>
-          <button class="button is-link" on:click={getAllLessons}
-            >Toggle all lessons</button
+    {#if errorMessage}
+      <h1>{errorMessage}</h1>
+      <a href="/edit-profile" class="button is-link" use:link
+            >Edit profile</a
+          >
+    {:else}
+      <div class="columns">
+        <div class="column is-one-fifth">
+          <ProfileData profileData={$userProfile} />
+          <a href="/edit-profile" class="button is-link" use:link
+            >Edit profile</a
           >
         </div>
-        {#if allLessons}
-          <LessonList lessonList={$lessonsData} />
-        {:else}
-          <LessonList lessonList={$lessonsData.slice(0, 2)} />
-        {/if}
-      </div>
-      <div class="column">
-        <div class="category-list-header">
-          <h1>Added categories</h1>
-          <button class="button is-link" on:click={getAllCategories}
-            >Toggle all categories</button
-          >
+        <div class="column">
+          <div class="category-list-header">
+            <h1>Added lessons</h1>
+            <button class="button is-link" on:click={getAllLessons}
+              >Toggle all lessons</button
+            >
+          </div>
+          {#if allLessons}
+            <LessonList lessonList={$lessonsData} />
+          {:else}
+            <LessonList lessonList={$lessonsData.slice(0, 2)} />
+          {/if}
         </div>
-        {#if allCategories}
-          <CategoryList categoryList={$categoriesData} />
-        {:else}
-          <CategoryList categoryList={$categoriesData.slice(0, 2)} />
-        {/if}
+        <div class="column">
+          <div class="category-list-header">
+            <h1>Added categories</h1>
+            <button class="button is-link" on:click={getAllCategories}
+              >Toggle all categories</button
+            >
+          </div>
+          {#if allCategories}
+            <CategoryList categoryList={$categoriesData} />
+          {:else}
+            <CategoryList categoryList={$categoriesData.slice(0, 2)} />
+          {/if}
+        </div>
       </div>
-    </div>
+    {/if}
   </div>
 </PageTransitions>
 
