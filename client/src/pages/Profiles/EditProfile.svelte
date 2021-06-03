@@ -31,10 +31,11 @@
     <h1>Edit profile</h1>
     <form on:submit|preventDefault={setProfileChanges}>
       <div class="field">
-        <label for="" class="label">First Name</label>
+        <label for="first-name" class="label">First Name</label>
         <input
           type="text"
           class="input"
+          name="first-name"
           bind:value={firstName}
           placeholder={$userProfile.firstName}
           required
@@ -42,10 +43,11 @@
       </div>
 
       <div class="field">
-        <label for="" class="label">Last Name</label>
+        <label for="last-name" class="label">Last Name</label>
         <input
           type="text"
           class="input"
+          name="last-name"
           bind:value={lastName}
           placeholder={$userProfile.lastName}
           required
@@ -53,11 +55,12 @@
       </div>
 
       <div class="field">
-        <label for="" class="label">Age</label>
+        <label for="age" class="label">Age</label>
         <input
           type="number"
           class="input"
           min="14"
+          name="age"
           bind:value={age}
           placeholder={$userProfile.age}
           required
