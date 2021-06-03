@@ -21,11 +21,11 @@
       $user = data.user;
       $you = data.user.username;
       toast.push("Logged in succesfully!", {
-      theme: {
-        "--toastBackground": "#48BB78",
-        "--toastProgressBackground": "#2F855A",
-      },
-    });
+        theme: {
+          "--toastBackground": "#48BB78",
+          "--toastProgressBackground": "#2F855A",
+        },
+      });
       push("/dashboard");
     } catch (error) {
       if (error.response.status === 401) {
@@ -50,6 +50,7 @@
           <label for="username" class="label">Username</label>
           <div class="control">
             <input
+              id="username"
               type="text"
               class="input"
               name="username"
@@ -64,6 +65,7 @@
           <label for="password" class="label">Password</label>
           <div class="control">
             <input
+              id="password"
               type="password"
               class="input"
               name="password"
@@ -75,7 +77,12 @@
         </div>
 
         <div class="control">
-          <input type="submit" class="button is-info is-light" value="Submit" />
+          <input
+            id="login"
+            type="submit"
+            class="button is-info is-light"
+            value="Submit"
+          />
         </div>
       </form>
     </div>
