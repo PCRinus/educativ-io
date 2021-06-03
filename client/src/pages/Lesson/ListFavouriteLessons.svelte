@@ -13,7 +13,7 @@
 
 <PageTransitions>
   <div class="container container-custom">
-    <h1>Favourite Lessons</h1>
+    <h1>Favourites</h1>
     <LessonList lessonList={$favouriteLessons} />
   </div>
 </PageTransitions>
