@@ -3,6 +3,7 @@
   import { onMount } from "svelte";
   import { currentLessonData, selectedLessonSlug } from "../../stores";
   import marked from "marked";
+  import moment from "moment";
   import PageTransitions from "../../components/PageTransitions.svelte";
 
   let markdown;
@@ -18,7 +19,7 @@
   <div class="container container-custom">
     <h1>{$currentLessonData.title}</h1>
     <h4>{$currentLessonData.description}</h4>
-    <h4>{$currentLessonData.createdAt}</h4>
+    <h4>{moment($currentLessonData.createdAt).format("Do MMMM YYYY")}</h4>
     <p>{@html markdown}</p>
   </div>
 </PageTransitions>
