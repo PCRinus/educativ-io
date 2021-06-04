@@ -4,10 +4,12 @@
     currentLessonTitle,
     currentLessonDescription,
     currentLessonCategory,
+    selectedLessonSlug,
   } from "../../stores";
   import { toast } from "@zerodevx/svelte-toast";
   import { onDestroy, onMount } from "svelte";
   import marked from "marked";
+  import slugify from "slugify";
   import { push } from "svelte-spa-router";
   import MarkdownExplanation from "./MarkdownExplanation.svelte";
   import PageTransitions from "../../components/PageTransitions.svelte";
@@ -17,6 +19,8 @@
   ### Write your lesson here ...`;
   $: markdown = marked(source);
 
+  $: slug = "";
+
   function submitLesson() {
     const lesson = {
       title: $currentLessonTitle,
@@ -24,17 +28,26 @@
       parentCategory: $currentLessonCategory.name,
       markdown: source,
     };
+    slug = slugify($currentLessonTitle, {
+      lower: true,
+      strict: true,
+    });
+    $selectedLessonSlug = slug;
     axios.post("/api/lesson", lesson);
     redirectToDashboard();
   }
 
   function redirectToDashboard() {
-    toast.push("Lesson added!", {
-      theme: {
-        "--toastBackground": "#48BB78",
-        "--toastProgressBackground": "#2F855A",
-      },
-    });
+    toast.push(
+      `Lesson added! <a href="/#/lessons/${slug}" style="color:white; text-decoration:underline">Click here to go to the lesson.</a>`,
+      {
+        theme: {
+          "--toastBackground": "#48BB78",
+          "--toastProgressBackground": "#2F855A",
+        },
+        duration: 5000,
+      }
+    );
     push("/dashboard");
   }
 
