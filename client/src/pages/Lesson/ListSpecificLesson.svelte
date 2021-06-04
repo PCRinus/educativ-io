@@ -17,9 +17,10 @@
   function downloadPDF() {
     toast.push("Generating PDF...", {
       theme: {
-        "--toastBackground": "#fcdd15",
+        "--toastBackground": "#fb8203",
         "--toastProgressBackground": "#fcb815",
       },
+      duration: 5000,
     });
     const lessonData = {
       lessonURL: window.location.href,
