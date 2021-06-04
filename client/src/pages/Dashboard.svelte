@@ -43,19 +43,22 @@
     <h1>Browse available lessons:</h1>
     <div class="columns">
       <div class="column">
-        <a href="/categories" class="button is-link" use:link
-          >Browse by category</a
+        <a
+          id="all-categories"
+          href="/categories"
+          class="button is-link"
+          use:link>Browse by category</a
         >
       </div>
 
       <div class="column">
-        <a href="/lessons" class="button is-link" use:link
+        <a id="all-lessons" href="/lessons" class="button is-link" use:link
           >Browse all available lessons</a
         >
       </div>
 
       <div class="column">
-        <a href="/new-lesson" class="button is-link" use:link
+        <a id="new-lesson" href="/new-lesson" class="button is-link" use:link
           >Add a new lesson</a
         >
       </div>
