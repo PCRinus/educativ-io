@@ -45,7 +45,7 @@
           class="button is-link"
           on:click={() => redirectToLesson(lesson.slug)}>Go to lesson</button
         >
-        {#if lesson.isFavourite === true}
+        <!-- {#if lesson.isFavourite === true}
           <button
             class="button is-link"
             on:click={() => manageFavourites(lesson._id, lesson.isFavourite)}
@@ -57,7 +57,7 @@
             on:click={() => manageFavourites(lesson._id, lesson.isFavourite)}
             >Add to favourites</button
           >
-        {/if}
+        {/if} -->
       </div>
     </div>
   {/each}

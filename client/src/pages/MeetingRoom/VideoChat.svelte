@@ -1,5 +1,5 @@
 <script>
-import { onMount } from "svelte";
+  import { onMount } from "svelte";
 
   import { uuidKey } from "../../stores";
   export let videoUrl;
@@ -7,9 +7,9 @@ import { onMount } from "svelte";
   let formattedVideoUrl;
 
   onMount(() => {
-      formattedVideoUrl = videoUrl.replace("DEFAULT_ROOM", $uuidKey)
-      console.log(formattedVideoUrl)
-;  })
+    formattedVideoUrl = videoUrl.replace("DEFAULT_ROOM", $uuidKey);
+    console.log(formattedVideoUrl);
+  });
 </script>
 
 <iframe

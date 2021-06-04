@@ -38,7 +38,7 @@
       {#if $user}
         <a href="/dashboard" use:link class="navbar-item"> Dashboard </a>
         <a href="/you" use:link class="navbar-item"> Profile </a>
-        <a href="/favourites" use:link class="navbar-item"> Favourites </a>
+        <!-- <a href="/favourites" use:link class="navbar-item"> Favourites </a> -->
       {/if}
     </div>
 
