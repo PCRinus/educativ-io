@@ -36,7 +36,6 @@
   function savePDF() {
     return downloadPDF() // API call
       .then((response) => {
-        debugger;
         const blob = new Blob([response.data], { type: "application/pdf" });
         const link = document.createElement("a");
         link.href = window.URL.createObjectURL(blob);
