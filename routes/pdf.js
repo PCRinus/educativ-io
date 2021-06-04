@@ -2,31 +2,8 @@ const { Router } = require("express");
 const puppeteer = require("puppeteer");
 const { pdfAdminUser, pdfAdminPass } = require("../config");
 const { ensureLogin } = require("../middlewares/auth");
-const fs = require("fs-extra");
 
 const router = Router();
-
-async function login(page) {
-  try {
-    await page.click("#login");
-    await page.type("#username", pdfAdminUser);
-    await page.type("#password", pdfAdminPass);
-    await page.click("#login-button");
-  } catch (error) {
-    console.log("login eror");
-  }
-}
-
-async function gotoLesson(page, lessonSlug) {
-  try {
-    await page.waitForSelector("#all-lessons");
-    await page.click("#all-lessons");
-    await page.waitForSelector("#" + lessonSlug);
-    await page.click("#" + lessonSlug);
-  } catch (error) {
-    console.log("gotoError");
-  }
-}
 
 router.post("/", ensureLogin, async (req, res) => {
   try {
