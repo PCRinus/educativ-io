@@ -1,11 +1,11 @@
 <script>
   import axios from "axios";
-  import moment from "moment"
+  import moment from "moment";
   import { push } from "svelte-spa-router";
   import { selectedLessonSlug, userName } from "../stores";
 
   function manageFavourites(lessonId, isFavourite) {
-    axios.patch("/api/lesson/" + lessonId, {isFavourite: !isFavourite})
+    axios.patch("/api/lesson/" + lessonId, { isFavourite: !isFavourite });
   }
 
   function redirectToLesson(slug) {
@@ -36,9 +36,12 @@
             >{lesson.author}</a
           >
         </p>
-        <p class="subtitle">{moment(lesson.createdAt).format("Do MMMM YYYY")}</p>
+        <p class="subtitle">
+          {moment(lesson.createdAt).format("Do MMMM YYYY")}
+        </p>
 
         <button
+          id={lesson.slug}
           class="button is-link"
           on:click={() => redirectToLesson(lesson.slug)}>Go to lesson</button
         >
