@@ -2,7 +2,6 @@
   import axios from "axios";
   import { user, you, userProfile } from "../stores";
   import { push } from "svelte-spa-router";
-  import { toast } from "@zerodevx/svelte-toast";
   import PageTransitions from "../components/PageTransitions.svelte";
   let username;
   let password;
@@ -20,12 +19,6 @@
       });
       $user = data.user;
       $you = data.user.username;
-      toast.push("Logged in succesfully!", {
-        theme: {
-          "--toastBackground": "#48BB78",
-          "--toastProgressBackground": "#2F855A",
-        },
-      });
       push("/dashboard");
     } catch (error) {
       if (error.response.status === 401) {
@@ -78,7 +71,7 @@
 
         <div class="control">
           <input
-            id="login"
+            id="login-button"
             type="submit"
             class="button is-info is-light"
             value="Submit"
