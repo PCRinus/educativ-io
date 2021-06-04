@@ -17,18 +17,16 @@
 
   function downloadPDF() {
     toast.push("Generating PDF...", {
-      theme: {
-        "--toastBackground": "#fb8203",
-        "--toastProgressBackground": "#fcb815",
-      },
-      duration: 5000,
+      initial: 0,
+      progress: 1,
+      dismissable: false
     });
     const lessonData = {
       lessonURL: window.location.href,
       lessonSlug: $selectedLessonSlug,
     };
     return axios.post("/api/pdf", lessonData, {
-      responseType: 'arraybuffer',
+      responseType: "arraybuffer",
       headers: {
         Accept: "application/pdf",
       },
