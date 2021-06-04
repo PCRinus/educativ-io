@@ -15,9 +15,15 @@ router.post("/", ensureLogin, async (req, res) => {
     const page = await browser.newPage();
     await page.setViewport({ width: 1920, height: 1080 });
 
-    await page.goto("http://localhost:8080/#/", {
-      waitUntil: "networkidle2",
-    });
+    if (process.env.NODE_ENV === "production") {
+      await page.goto("https://educativ-io.herokuapp.com/#/", {
+        waitUntil: "networkidle2",
+      });
+    } else {
+      await page.goto("http://localhost:8080/#/", {
+        waitUntil: "networkidle2",
+      });
+    }
 
     await page.click("#login");
     await page.type("#username", pdfAdminUser);
@@ -28,7 +34,7 @@ router.post("/", ensureLogin, async (req, res) => {
     await page.click("#all-lessons");
     await page.waitForSelector("#" + lessonSlug);
     await page.click("#" + lessonSlug);
-    await page.waitForTimeout(1000)
+    await page.waitForTimeout(1000);
     // await gotoLesson(page, lessonSlug);
 
     // await page.goto(lessonURL, {
@@ -36,7 +42,8 @@ router.post("/", ensureLogin, async (req, res) => {
     // });
     console.log(lessonURL);
     await page.addStyleTag({
-      content: "nav { display: none} footer {display: none} #download-pdf {display: none}",
+      content:
+        "nav { display: none} footer {display: none} #download-pdf {display: none}",
     });
     const generatedPDF = await page.pdf({
       path: "downloads/" + lessonSlug + ".pdf",
