@@ -16,9 +16,9 @@
   });
 
   function downloadPDF() {
-    toast.push("Generating PDF...", {
+    toast.push("Generating PDF, please wait...", {
       initial: 0,
-      progress: 1,
+      progress: 0,
       dismissable: false,
     });
     const lessonData = {
@@ -36,6 +36,7 @@
   function savePDF() {
     return downloadPDF()
       .then((response) => {
+        toast.pop();
         const blob = new Blob([response.data], { type: "application/pdf" });
         const link = document.createElement("a");
         link.href = window.URL.createObjectURL(blob);
