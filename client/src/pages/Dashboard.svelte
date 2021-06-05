@@ -12,7 +12,6 @@
   function generateUUID() {
     $uuidKey = uuidv4();
     $uuidRedirectButton = true;
-    isKeyCopied = false;
   }
 
   function redirectToRoom() {

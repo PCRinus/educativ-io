@@ -25,33 +25,36 @@
     <h1>Add lesson details</h1>
     <form on:submit|preventDefault={redirectToEditor}>
       <div class="field">
-        <label for="" class="label">Lesson Title</label>
+        <label for="lesson-title" class="label">Lesson Title</label>
         <input
           type="text"
           class="input"
+          name="lesson-title"
           bind:value={$currentLessonTitle}
           required
         />
       </div>
 
       <div class="field">
-        <label for="" class="label">Description</label>
+        <label for="lesson-description" class="label">Description</label>
         <input
           type="text"
           class="input"
+          name="lesson-description"
           bind:value={$currentLessonDescription}
           required
         />
       </div>
 
       <div class="field">
-        <label for="" class="label">Category</label>
+        <label for="category-select" class="label">Category</label>
         <!-- svelte-ignore a11y-no-onchange -->
         <select
           class="category-selector"
+          name="category-select"
           bind:value={$currentLessonCategory}
         >
-        <option disabled selected value=''>Please choose a category</option>
+          <option disabled selected value="">Please choose a category</option>
           {#each $categoriesData as category}
             <option value={category}>
               {category.name}
