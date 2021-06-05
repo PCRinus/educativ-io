@@ -44,6 +44,7 @@
         link.click();
       })
       .catch((err) => {
+        toast.pop();
         toast.push(`Error while generating the PDF: ${err}`, {
           theme: {
             "--toastBackground": "#F56565",

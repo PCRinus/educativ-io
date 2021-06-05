@@ -1,13 +1,32 @@
 const { Router } = require("express");
 const puppeteer = require("puppeteer");
-const { pdfAdminUser, pdfAdminPass } = require("../config");
+const { localURL, deploymentURL, pdfAdminUser, pdfAdminPass } = require("../config");
 const { ensureLogin } = require("../middlewares/auth");
+const fs = require("fs");
 
 const router = Router();
 
 router.post("/", ensureLogin, async (req, res) => {
   try {
     const { lessonURL, lessonSlug } = req.body;
+    const path = "./downloads/" + lessonSlug + ".pdf";
+
+    fs.access(path, fs.F_OK, (err) => {
+      if (!err) {
+        res.contentType("application/pdf");
+        res.download(path);
+        console.log("Sent");
+      } else {
+        generatePDF(res, lessonURL, lessonSlug);
+      }
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+async function generatePDF(res, lessonURL, lessonSlug) {
+  try {
     const browser = await puppeteer.launch({
       headless: true,
       args: ["--no-sandbox", "--disable-dev-shm-usage"],
@@ -16,11 +35,11 @@ router.post("/", ensureLogin, async (req, res) => {
     await page.setViewport({ width: 1920, height: 1080 });
 
     if (process.env.NODE_ENV === "production") {
-      await page.goto("https://educativ-io.herokuapp.com/#/", {
+      await page.goto(deploymentURL, {
         waitUntil: "networkidle2",
       });
     } else {
-      await page.goto("http://localhost:8080/#/", {
+      await page.goto(localURL, {
         waitUntil: "networkidle2",
       });
     }
@@ -35,12 +54,7 @@ router.post("/", ensureLogin, async (req, res) => {
     await page.waitForSelector("#" + lessonSlug);
     await page.click("#" + lessonSlug);
     await page.waitForTimeout(1000);
-    // await gotoLesson(page, lessonSlug);
 
-    // await page.goto(lessonURL, {
-    //   waitUntil: "networkidle2",
-    // });
-    console.log(lessonURL);
     await page.addStyleTag({
       content:
         "nav { display: none} footer {display: none} #download-pdf {display: none}",
@@ -63,6 +77,6 @@ router.post("/", ensureLogin, async (req, res) => {
   } catch (error) {
     console.log(error);
   }
-});
+}
 
 module.exports = router;
