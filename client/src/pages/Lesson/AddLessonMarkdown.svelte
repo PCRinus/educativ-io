@@ -70,17 +70,8 @@
 
 <PageTransitions>
   <div class="container">
-    <div class="columns">
-      <div class="column">
-        <h1>Title: {$currentLessonTitle}</h1>
-      </div>
-      <div class="column">
-        <h1>Description: {$currentLessonDescription}</h1>
-      </div>
-      <div class="column">
-        <h1>Category: {$currentLessonCategory.name}</h1>
-      </div>
-    </div>
+    <h1>{$currentLessonTitle}</h1>
+    <h3>{$currentLessonDescription}</h3>
     <div class="columns">
       <div class="column is-9">
         <form on:submit|preventDefault={submitLesson}>
