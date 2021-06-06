@@ -16,7 +16,10 @@
 </script>
 
 <PageTransitions>
-  <div class="container container-custom section">
+  <div
+    id="chat-container"
+    class="container section hero is-fullheight-with-navbar"
+  >
     {#if process.env.NODE_ENV === "production"}
       <VideoChat videoUrl={serverUrl} />
     {:else}
