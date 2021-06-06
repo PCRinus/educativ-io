@@ -17,7 +17,7 @@
 </script>
 
 <PageTransitions>
-  <div class="container container-custom">
+  <div class="container container-custom section">
     <div class="category-list-header">
       <h1>Categories</h1>
       <button class="button is-link" on:click={redirectToAddCategory}

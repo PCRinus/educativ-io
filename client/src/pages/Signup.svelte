@@ -49,7 +49,7 @@
 </script>
 
 <PageTransitions>
-  <div class="container container-custom">
+  <div class="container container-custom section">
     <div class="section">
       <h1 class="title">Sign Up</h1>
       <hr />

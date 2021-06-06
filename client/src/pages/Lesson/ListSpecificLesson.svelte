@@ -56,7 +56,7 @@
 </script>
 
 <PageTransitions>
-  <div class="container container-custom">
+  <div class="container container-custom section">
     <h1>{$currentLessonData.title}</h1>
     <h4>
       {$currentLessonData.description} - {moment(

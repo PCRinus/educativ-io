@@ -21,7 +21,7 @@
 </script>
 
 <PageTransitions>
-  <div class="container container-custom">
+  <div class="container container-custom section">
     <h1>Join an existing meeting room</h1>
 
     <form on:submit|preventDefault={() => joinRoom($uuidKey)}>

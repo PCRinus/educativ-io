@@ -14,7 +14,7 @@
 </script>
 
 <PageTransitions>
-  <div class="container container-custom">
+  <div class="container container-custom section">
     <h1>All lessons for {$selectedCategory}</h1>
     <LessonList lessonList={$filteredLessonsData} />
   </div>

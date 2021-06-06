@@ -19,7 +19,7 @@
 </script>
 
 <PageTransitions>
-  <div class="container container-custom">
+  <div class="container container-custom section">
     <h1>Add a category</h1>
     <form on:submit|preventDefault={addCategory}>
       <div class="field">

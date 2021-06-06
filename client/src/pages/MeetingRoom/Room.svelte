@@ -16,7 +16,7 @@
 </script>
 
 <PageTransitions>
-  <div class="container container-custom">
+  <div class="container container-custom section">
     {#if process.env.NODE_ENV === "production"}
       <VideoChat videoUrl={serverUrl} />
     {:else}

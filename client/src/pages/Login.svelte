@@ -31,7 +31,7 @@
 </script>
 
 <PageTransitions>
-  <div class="container container-custom">
+  <div class="container container-custom section">
     <div class="section">
       <h1 class="title">Log In</h1>
       <hr />

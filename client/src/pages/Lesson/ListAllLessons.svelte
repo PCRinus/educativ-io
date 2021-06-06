@@ -12,7 +12,7 @@
 </script>
 
 <PageTransitions>
-  <div class="container container-custom">
+  <div class="container container-custom section">
     <h1>All lessons</h1>
     <LessonList lessonList={$lessonsData} />
   </div>

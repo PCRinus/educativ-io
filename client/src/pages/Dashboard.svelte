@@ -38,7 +38,7 @@
 </script>
 
 <PageTransitions>
-  <div class="container container-custom">
+  <div class="container container-custom section section">
     <h1>Browse available lessons:</h1>
     <div class="columns">
       <div class="column">

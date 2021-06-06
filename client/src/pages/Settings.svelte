@@ -3,7 +3,7 @@
 </script>
 
 <PageTransitions>
-  <div class="container container-custom">
+  <div class="container container-custom section">
     <h1>Settings</h1>
     <h1>Dark mode</h1>
   </div>
