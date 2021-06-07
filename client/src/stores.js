@@ -1,7 +1,7 @@
 import { writable } from "svelte/store";
 
 export const you = writable("");
-
+export const cookieBanner = writable(true);
 export const user = writable(null);
 export const uuidKey = writable("");
 export const uuidRedirectButton = writable(false);

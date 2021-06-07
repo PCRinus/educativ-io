@@ -1,16 +1,14 @@
 <script>
-  import { fade } from "svelte/transition";
-  //   import PageTransitions from "../components/PageTransitions.svelte";
-
-  let visible = true;
+  import { cookieBanner } from "../stores";
+  import CookieTransition from "../components/CookieTransition.svelte";
 
   function cookiesAccepted() {
-    visible = false;
+    $cookieBanner = false;
   }
 </script>
 
-{#if visible}
-  <div transition:fade id="cookie-banner" class="container section">
+<CookieTransition>
+  <div id="cookie-banner" class="container section">
     <p>
       🍪 We don't use any cookies, so you don't need to consent to any cookie
       usage!
@@ -19,7 +17,7 @@
       ><i class="fas fa-check" /> Accept</button
     >
   </div>
-{/if}
+</CookieTransition>
 
 <style>
   #cookie-banner {
