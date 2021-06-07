@@ -1,6 +1,11 @@
 const { Router } = require("express");
 const puppeteer = require("puppeteer");
-const { localURL, deploymentURL, pdfAdminUser, pdfAdminPass } = require("../config");
+const {
+  localURL,
+  deploymentURL,
+  pdfAdminUser,
+  pdfAdminPass,
+} = require("../config");
 const { ensureLogin } = require("../middlewares/auth");
 const fs = require("fs");
 
@@ -57,7 +62,7 @@ async function generatePDF(res, lessonURL, lessonSlug) {
 
     await page.addStyleTag({
       content:
-        "nav { display: none} footer {display: none} #download-pdf {display: none}",
+        "nav { display: none} footer {display: none} #download-pdf {display: none} #cookie-banner {display: none}",
     });
     const generatedPDF = await page.pdf({
       path: "downloads/" + lessonSlug + ".pdf",
