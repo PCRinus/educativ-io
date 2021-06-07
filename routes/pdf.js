@@ -49,6 +49,7 @@ async function generatePDF(res, lessonURL, lessonSlug) {
       });
     }
 
+    await page.click("#accept-cookies");
     await page.click("#login");
     await page.type("#username", pdfAdminUser);
     await page.type("#password", pdfAdminPass);
