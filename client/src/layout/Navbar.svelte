@@ -9,12 +9,13 @@
     $user = null;
     push("/");
   }
-
 </script>
 
 <nav id="navbar" class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="#/">Educativ.io </a>
+    {#if !$user}
+      <a class="navbar-item" href="#/">Educativ.io </a>
+    {/if}
 
     <!-- svelte-ignore a11y-invalid-attribute -->
     <span
@@ -49,7 +50,9 @@
         {/if}
         <div class="buttons">
           {#if $user}
-            <button class="button is-danger is-light" on:click={logout}>Logout</button>
+            <button class="button is-danger is-light" on:click={logout}
+              >Logout</button
+            >
           {:else}
             <a href="/signup" use:link class="button is-primary">
               <strong>Sign up</strong>

@@ -60,7 +60,9 @@
   <SvelteToast
     options={{ reversed: true, duration: 3000, intro: { y: 192 } }}
   />
-  <Cookie />
+  {#if process.env.NODE_ENV === "production"}
+    <Cookie />
+  {/if}
 </div>
 <Footer />
 
