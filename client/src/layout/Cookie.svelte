@@ -14,7 +14,7 @@
       We don't use any cookies for tracking, so you don't need to consent to any cookie
       usage!
     </p>
-    <button class="button is-link" on:click={cookiesAccepted}
+    <button id="accept-cookies" class="button is-link" on:click={cookiesAccepted}
       ><i class="fas fa-check" /> Accept</button
     >
   </div>
