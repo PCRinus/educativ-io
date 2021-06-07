@@ -6,6 +6,7 @@
   import Navbar from "./layout/Navbar.svelte";
   import Footer from "./layout/Footer.svelte";
   import Home from "./pages/Home.svelte";
+  import Cookie from "./layout/Cookie.svelte";
   import Dashboard from "./pages/Dashboard.svelte";
   import Signup from "./pages/Signup.svelte";
   import Login from "./pages/Login.svelte";
@@ -56,7 +57,10 @@
 <Navbar />
 <div class="content">
   <Router {routes} />
-  <SvelteToast options={{ reversed: true, duration: 3000, intro: { y: 192 } }} />
+  <SvelteToast
+    options={{ reversed: true, duration: 3000, intro: { y: 192 } }}
+  />
+  <Cookie />
 </div>
 <Footer />
 
