@@ -9,8 +9,9 @@
 
 <CookieTransition>
   <div id="cookie-banner" class="container section">
+    <h2>🍪 Cookie disclamer</h2>
     <p>
-      🍪 We don't use any cookies, so you don't need to consent to any cookie
+      We don't use any cookies for tracking, so you don't need to consent to any cookie
       usage!
     </p>
     <button class="button is-link" on:click={cookiesAccepted}
