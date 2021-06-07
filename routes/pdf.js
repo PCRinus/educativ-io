@@ -53,7 +53,7 @@ async function generatePDF(res, lessonURL, lessonSlug) {
     await page.click("#all-lessons");
     await page.waitForSelector("#" + lessonSlug);
     await page.click("#" + lessonSlug);
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(1500);
 
     await page.addStyleTag({
       content:
