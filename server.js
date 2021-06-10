@@ -20,6 +20,7 @@ const chatRoute = require("./routes/chat");
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 
 mongoose
@@ -41,6 +42,7 @@ app.use(
     resave: true,
     saveUninitialized: true,
     secret: "secret key",
+    saveUninitialized: true,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
   })
 );
