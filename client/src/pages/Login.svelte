@@ -1,6 +1,6 @@
 <script>
   import axios from "axios";
-  import { user, you, userProfile } from "../stores";
+  import { user, you, userProfile, isAuthenticated} from "../stores";
   import { push } from "svelte-spa-router";
   import PageTransitions from "../components/PageTransitions.svelte";
   let username;
@@ -19,6 +19,7 @@
       });
       $user = data.user;
       $you = data.user.username;
+      $isAuthenticated = true;
       push("/dashboard");
     } catch (error) {
       if (error.response.status === 401) {

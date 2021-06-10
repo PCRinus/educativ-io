@@ -1,12 +1,13 @@
 <script>
   import axios from "axios";
   import { push, link } from "svelte-spa-router";
-  import { user } from "../stores";
+  import { user, isAuthenticated} from "../stores";
   let isActive = false;
 
   async function logout() {
     await axios.post("/api/auth/logout");
     $user = null;
+    $isAuthenticated = false
     push("/");
   }
 </script>
