@@ -2,6 +2,7 @@
   import { uuidKey, uuidRedirectButton } from "../../stores";
   import { onDestroy } from "svelte";
   import VideoChat from "./VideoChat.svelte";
+  import TextChat from "./TextChat.svelte";
   import PageTransitions from "../../components/PageTransitions.svelte";
 
   let localUrl =
@@ -16,14 +17,26 @@
 </script>
 
 <PageTransitions>
-  <div
-    id="chat-container"
-    class="container section hero is-fullheight-with-navbar"
-  >
-    {#if process.env.NODE_ENV === "production"}
-      <VideoChat videoUrl={serverUrl} />
-    {:else}
-      <VideoChat videoUrl={localUrl} />
-    {/if}
-  </div></PageTransitions
->
+  <div class="columns">
+    <div
+      id="chat-container"
+      class="container section hero is-fullheight-with-navbar column is-three-fifths"
+    >
+      {#if process.env.NODE_ENV === "production"}
+        <VideoChat videoUrl={serverUrl} />
+      {:else}
+        <VideoChat videoUrl={localUrl} />
+      {/if}
+    </div>
+
+    <div id="text-chat-container" class="column">
+      <TextChat />
+    </div>
+  </div>
+</PageTransitions>
+
+<style>
+  #text-chat-container {
+    padding-top: 2rem;
+  }
+</style>
