@@ -47,6 +47,7 @@
     "/categories/:categoryName/:slug": ListSpecificLesson,
     "/lessons/:slug": ListSpecificLesson,
     "*": NotFound,
+
   };
 
   onMount(() => {

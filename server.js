@@ -16,9 +16,11 @@ const profileRoute = require("./routes/profile");
 const categoriesRoute = require("./routes/categories");
 const pdfRoute = require("./routes/pdf");
 const lessonRoute = require("./routes/lesson");
+const chatRoute = require("./routes/chat");
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 
 mongoose
@@ -57,6 +59,7 @@ app.use("/api/profile", profileRoute);
 app.use("/api/categories", categoriesRoute);
 app.use("/api/pdf", pdfRoute);
 app.use("/api/lesson", lessonRoute);
+app.use("/api/chat", chatRoute);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/public"));
