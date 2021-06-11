@@ -15,7 +15,6 @@
       Pusher.logToConsole = true;
     }
     joinChat();
-    console.log("LALALALALALALA" + typeof messages);
   });
 
   const pusher = new Pusher("f923b2a8f729fc995a83", {
@@ -26,7 +25,7 @@
 
   async function joinChat() {
     try {
-      const { data } = await axios.post("api/chat/join-chat", {
+      await axios.post("api/chat/join-chat", {
         username: $you,
       });
       // Current user has joined the chat
@@ -74,7 +73,18 @@
   }
 </script>
 
-<h1>Group chats: {members}</h1>
+<h1>Messages:</h1>
+{#if status}
+  <p>{status}</p>
+{/if}
+<div class="panel-body">
+  {#each objectValues as message}
+    <div class="message">
+      <p class="username">{message.username}</p>
+      <p>{message.message}</p>
+    </div>
+  {/each}
+</div>
 
 <form on:submit|preventDefault={sendMessage} class="form">
   <div class="field">
@@ -84,6 +94,7 @@
         type="text"
         name="message"
         placeholder="Your message..."
+        class="input"
         bind:value={newMessage}
       />
     </div>
@@ -99,20 +110,19 @@
   </div>
 </form>
 
-<div class="panel-body">
-  {#if status}
-    <p>{status}</p>
-  {/if}
-  <h1>Messages:</h1>
-  {#each objectValues as message}
-    <p>{message.username}</p>
-    <p>{message.message}</p>
-  {/each}
-</div>
-
 <style>
   .panel-body {
     overflow-y: scroll;
     height: 350px;
+    border: solid 1px #b5b5b5;
+    border-radius: 5px;
+  }
+
+  .message {
+    padding: 0rem 1rem;
+  }
+
+  .username {
+      font-weight: 700;
   }
 </style>
