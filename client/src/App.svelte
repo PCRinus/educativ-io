@@ -24,7 +24,7 @@
   import ListSpecificLesson from "./pages/Lesson/ListSpecificLesson.svelte";
   import ListFavouriteLessons from "./pages/Lesson/ListFavouriteLessons.svelte";
   import EditProfile from "./pages/Profiles/EditProfile.svelte";
-  import TextChat from "./pages/MeetingRoom/TextChat.svelte";
+  import NotFound from "./pages/NotFound.svelte";
 
   const routes = {
     "/": Home,
@@ -46,7 +46,8 @@
     "/categories/:categoryName": ListAllLessonsInsideCategory,
     "/categories/:categoryName/:slug": ListSpecificLesson,
     "/lessons/:slug": ListSpecificLesson,
-    "/chat": TextChat,
+    "*": NotFound,
+
   };
 
   onMount(() => {
