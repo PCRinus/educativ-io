@@ -42,7 +42,6 @@ app.use(
     resave: true,
     saveUninitialized: true,
     secret: "secret key",
-    saveUninitialized: true,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
   })
 );
