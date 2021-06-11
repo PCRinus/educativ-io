@@ -8,12 +8,14 @@
   $: newMessage = "";
   $: messages = [];
   $: status = "";
+  let objectValues = [];
 
   onMount(() => {
     if (process.env.NODE_ENV !== "production") {
       Pusher.logToConsole = true;
     }
     joinChat();
+    console.log("LALALALALALALA" + typeof messages);
   });
 
   const pusher = new Pusher("f923b2a8f729fc995a83", {
@@ -63,6 +65,11 @@
         username: data.username,
         message: data.message,
       });
+      console.log("Messages: " + JSON.stringify(messages));
+      console.log(typeof messages);
+      console.log(messages.length);
+      console.log(Object.values(messages));
+      objectValues = Object.values(messages);
     });
   }
 </script>
@@ -97,7 +104,7 @@
     <p>{status}</p>
   {/if}
   <h1>Messages:</h1>
-  {#each messages as message}
+  {#each objectValues as message}
     <p>{message.username}</p>
     <p>{message.message}</p>
   {/each}
