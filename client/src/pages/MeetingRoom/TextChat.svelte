@@ -3,6 +3,7 @@
   import Pusher from "pusher-js";
   import { you } from "../../stores";
   import axios from "axios";
+  import moment from "moment";
 
   $: members = "";
   $: newMessage = "";
@@ -80,7 +81,9 @@
 <div class="panel-body">
   {#each objectValues as message}
     <div class="message">
-      <p class="username">{message.username}</p>
+      <p class="username">
+        {message.username} - <i>{moment().format("h:mm")}</i>
+      </p>
       <p>{message.message}</p>
     </div>
   {/each}
@@ -123,6 +126,6 @@
   }
 
   .username {
-      font-weight: 700;
+    font-weight: 700;
   }
 </style>
