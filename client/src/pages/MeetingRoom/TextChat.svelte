@@ -82,7 +82,7 @@
   {#each objectValues as message}
     <div class="message">
       <p class="username">
-        {message.username} - <i>{moment().format("h:mm")}</i>
+        <b>{message.username}</b> <i>{moment().format("h:mm")}</i>
       </p>
       <p>{message.message}</p>
     </div>
@@ -124,8 +124,8 @@
   .message {
     padding: 0rem 1rem;
   }
-
+/* 
   .username {
     font-weight: 700;
-  }
+  } */
 </style>
