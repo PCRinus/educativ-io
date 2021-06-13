@@ -5,7 +5,7 @@
     </p>
     <p>
       Source code available on
-      <a target="_blank" href="https://github.com/PCRinus/educativ-io"
+      <a href="https://github.com/PCRinus/educativ-io" target="_blank"
         ><i class="fab fa-github" /></a
       >
     </p>
@@ -18,6 +18,6 @@
   }
   .fab {
     font-size: 2rem;
-    transition: color ease .3s;
+    transition: color ease 0.3s;
   }
 </style>
