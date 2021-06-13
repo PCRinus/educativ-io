@@ -104,7 +104,7 @@
         <p>
           Use <a
             href="https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet"
-            target="_blank">Markdown</a
+            target="_blank" rel="noopener">Markdown</a
           > to write and format posts.
         </p>
         <details open>

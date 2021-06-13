@@ -5,7 +5,7 @@
     </p>
     <p>
       Source code available on
-      <a href="https://github.com/PCRinus/educativ-io" target="_blank"
+      <a href="https://github.com/PCRinus/educativ-io" target="_blank" rel="noopener"
         ><i class="fab fa-github" /></a
       >
     </p>

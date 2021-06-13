@@ -28,7 +28,7 @@ code block
     </tr>
     <tr>
       <td>[Link](https://...)</td>
-      <td><a href="https://google.com" target="_blank">Link</a></td>
+      <td><a href="https://google.com" target="_blank" rel="noopener">Link</a></td>
     </tr>
     <tr>
       <td>* item 1 <br /> * item 2</td>
