@@ -56,7 +56,9 @@ router.get("/fromUser/:author", ensureLogin, async (req, res) => {
 
 router.get("/fromFavourites/:isFavourite", ensureLogin, async (req, res) => {
   try {
-    const favouriteLessonsData = await Lesson.find({ isFavourite: req.params.isFavourite });
+    const favouriteLessonsData = await Lesson.find({
+      isFavourite: req.params.isFavourite,
+    });
     if (!favouriteLessonsData) {
       throw new Error("There are no favourite lessons");
     }
@@ -75,7 +77,6 @@ router.post("/", ensureLogin, async (req, res) => {
     parentCategory,
     markdown,
   });
-
   try {
     const lessonData = await newLesson.save();
     if (!lessonData) {
